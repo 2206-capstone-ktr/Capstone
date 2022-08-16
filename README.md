@@ -1,3 +1,3 @@
 # Capstone
 
-hi this is rigo
+this is rigo
