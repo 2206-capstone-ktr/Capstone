@@ -21,15 +21,18 @@ describe('User model', () => {
     }) // end describe('correctPassword')
     describe('authenticate', () => {
       let user;
-      beforeEach(async()=> user = await User.create({
-        username: 'lucy',
-        password: 'loo'
-      }));
+      beforeEach(
+        async () =>
+          (user = await User.create({
+            email: 'lucy',
+            password: 'loo',
+          }))
+      );
       describe('with correct credentials', ()=> {
         it('returns a token', async() => {
           const token = await User.authenticate({
-            username: 'lucy',
-            password: 'loo'
+            email: 'lucy',
+            password: 'loo',
           });
           expect(token).to.be.ok;
         })
@@ -39,8 +42,8 @@ describe('User model', () => {
 
           try {
             await User.authenticate({
-              username: 'lucy@gmail.com',
-              password: '123'
+              email: 'lucy@gmail.com',
+              password: '123',
             });
             throw 'nooo';
           }

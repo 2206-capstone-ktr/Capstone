@@ -2195,9 +2195,9 @@ const AuthForm = props => {
     onSubmit: handleSubmit,
     name: name
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-    htmlFor: "username"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("small", null, "Username")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    name: "username",
+    htmlFor: "email"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("small", null, "Email")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    name: "email",
     type: "text"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
     htmlFor: "password"
@@ -2238,9 +2238,9 @@ const mapDispatch = dispatch => {
     handleSubmit(evt) {
       evt.preventDefault();
       const formName = evt.target.name;
-      const username = evt.target.username.value;
+      const email = evt.target.email.value;
       const password = evt.target.password.value;
-      dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.authenticate)(username, password, formName));
+      dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.authenticate)(email, password, formName));
     }
 
   };
@@ -2273,9 +2273,9 @@ __webpack_require__.r(__webpack_exports__);
 
 const Home = props => {
   const {
-    username
+    auth
   } = props;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Welcome, ", username));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Welcome, ", auth.email));
 };
 /**
  * CONTAINER
@@ -2283,7 +2283,7 @@ const Home = props => {
 
 const mapState = state => {
   return {
-    username: state.auth.username
+    auth: state.auth
   };
 };
 
@@ -2416,10 +2416,10 @@ const me = () => async dispatch => {
     return dispatch(setAuth(res.data));
   }
 };
-const authenticate = (username, password, method) => async dispatch => {
+const authenticate = (email, password, method) => async dispatch => {
   try {
     const res = await axios__WEBPACK_IMPORTED_MODULE_0___default().post(`/auth/${method}`, {
-      username,
+      email,
       password
     });
     window.localStorage.setItem(TOKEN, res.data.token);
