@@ -15,14 +15,15 @@ const User = db.define('user', {
   },
   password: {
     type: Sequelize.STRING,
+    allowNull: false,
   },
   firstName: {
     type: Sequelize.STRING,
-    allowNull: false,
+    // allowNull: false,
   },
   lastName: {
     type: Sequelize.STRING,
-    allowNull: false,
+    // allowNull: false,
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,
@@ -41,19 +42,19 @@ const User = db.define('user', {
   },
 });
 
-module.exports = User
+module.exports = User;
 
 /**
  * instanceMethods
  */
-User.prototype.correctPassword = function(candidatePwd) {
+User.prototype.correctPassword = function (candidatePwd) {
   //we need to compare the plain version to an encrypted version of the password
   return bcrypt.compare(candidatePwd, this.password);
-}
+};
 
-User.prototype.generateToken = function() {
-  return jwt.sign({id: this.id}, process.env.JWT)
-}
+User.prototype.generateToken = function () {
+  return jwt.sign({ id: this.id }, process.env.JWT);
+};
 
 /**
  * classMethods
@@ -61,7 +62,7 @@ User.prototype.generateToken = function() {
 User.authenticate = async function ({ email, password }) {
   const user = await this.findOne({ where: { email } });
   if (!user || !(await user.correctPassword(password))) {
-    const error = Error('Incorrect username/password');
+    const error = Error('Incorrect email/password');
     error.status = 401;
     throw error;
   }
