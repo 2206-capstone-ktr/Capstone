@@ -1,5 +1,5 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 
 /**
  * COMPONENT
@@ -9,7 +9,7 @@ export const Home = (props) => {
 
   return (
     <div>
-      <h3>Welcome, {auth.email}</h3>
+      <h3>Welcome, {auth.firstName}</h3>
     </div>
   );
 };
@@ -23,4 +23,4 @@ const mapState = (state) => {
   };
 };
 
-export default connect(mapState)(Home)
+export default connect(mapState)(Home);
