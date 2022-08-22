@@ -2313,12 +2313,13 @@ __webpack_require__.r(__webpack_exports__);
 
 const Navbar = ({
   handleClick,
-  isLoggedIn
+  isLoggedIn,
+  auth
 }) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Planr"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", {
   className: "nav"
 }, isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
   className: "right"
-}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", null, "Hi, "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", null, "Hi, ", auth.email, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
   to: "/home"
 }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
   href: "#",
@@ -2335,7 +2336,8 @@ const Navbar = ({
 
 const mapState = state => {
   return {
-    isLoggedIn: !!state.auth.id
+    isLoggedIn: !!state.auth.id,
+    auth: state.auth
   };
 };
 
