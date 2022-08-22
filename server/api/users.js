@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 // get one user
-router.get('/:userId', requireToken, async (req, res, next) => {
+router.get('/:userId', async (req, res, next) => {
   try {
     if (req.user.isAdmin) {
       const user = await User.findByPk(req.params.userId);
