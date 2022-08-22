@@ -5,7 +5,12 @@ import { logout } from '../store';
 
 const Navbar = ({ handleClick, isLoggedIn, auth }) => (
   <div>
-    <h1>Planr</h1>
+    <Link to='/'>
+      <img
+        className='logo'
+        src='https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/kzwbqo3ipenftavyhgu9'
+      />
+    </Link>
     <nav className='nav'>
       {isLoggedIn ? (
         <div className='right'>
