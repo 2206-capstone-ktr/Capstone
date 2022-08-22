@@ -1,36 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  
 body {
-  font-family: sans-serif;
+  @apply font-sans;
 }
 
 a {
-  text-decoration: none;
+  @apply no-underline;
 }
 
 label {
-  display: block;
+  @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;
 }
 
 nav a {
-  display: inline-block;
-  margin: 1em;
+  @apply m-4 inline-block;
 }
 
 form div {
-  margin: 1em;
-  display: inline-block;
+  @apply m-4 inline-block;
+}
+
+input {
+  @apply appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500
 }
 
 nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 1em;
-  flex-wrap: wrap;
-  
+  @apply flex flex-wrap justify-around items-center gap-4;
 }
 .right {
-  float: right;
+  @apply float-right;
 }
 .logo {
-  height: 100px;
+  @apply h-24;
+}
 }
