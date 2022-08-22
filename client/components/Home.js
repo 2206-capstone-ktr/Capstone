@@ -10,12 +10,9 @@ export const Home = (props) => {
   console.log(user);
 
   return (
-    <>
-      <div>
-        <h3>Welcome, {user.firstName}</h3>
-      </div>
-      <SingleItinerary user={user} />
-    </>
+    <div>
+      <h3>Welcome, {auth.firstName}</h3>
+    </div>
   );
 };
 
