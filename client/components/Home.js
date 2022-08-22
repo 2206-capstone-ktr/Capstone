@@ -11,7 +11,7 @@ export const Home = (props) => {
 
   return (
     <div>
-      <h3>Welcome, {auth.firstName}</h3>
+      <h3>Welcome, {user.firstName}</h3>
     </div>
   );
 };
