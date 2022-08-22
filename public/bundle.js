@@ -2093,7 +2093,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _components_CreateItin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/CreateItin */ "./client/components/CreateItin.js");
+/* harmony import */ var _components_Forms_CreateItin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Forms/CreateItin */ "./client/components/Forms/CreateItin.js");
 /* harmony import */ var _components_Forms_Login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Forms/Login */ "./client/components/Forms/Login.js");
 /* harmony import */ var _components_Forms_SignUp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Forms/SignUp */ "./client/components/Forms/SignUp.js");
 /* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Home */ "./client/components/Home.js");
@@ -2122,12 +2122,12 @@ class Routes extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
       path: "/home",
       component: _components_Home__WEBPACK_IMPORTED_MODULE_5__["default"]
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+      path: "/create",
+      component: _components_Forms_CreateItin__WEBPACK_IMPORTED_MODULE_2__["default"]
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Redirect, {
       to: "/home"
-    }), ' ') : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
-      path: "/create",
-      component: _components_CreateItin__WEBPACK_IMPORTED_MODULE_2__["default"]
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+    })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
       path: "/",
       exact: true,
       component: _components_Forms_Login__WEBPACK_IMPORTED_MODULE_3__.Login
@@ -2169,10 +2169,10 @@ const mapDispatch = dispatch => {
 
 /***/ }),
 
-/***/ "./client/components/CreateItin.js":
-/*!*****************************************!*\
-  !*** ./client/components/CreateItin.js ***!
-  \*****************************************/
+/***/ "./client/components/Forms/CreateItin.js":
+/*!***********************************************!*\
+  !*** ./client/components/Forms/CreateItin.js ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
