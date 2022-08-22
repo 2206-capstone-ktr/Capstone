@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
+import CreateItinerary from './components/Forms/CreateItin';
 import { Login } from './components/Forms/Login';
 import { SignUp } from './components/Forms/SignUp';
 import Home from './components/Home';
@@ -22,6 +23,7 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route path='/home' component={Home} />
+            <Route path='/create' component={CreateItinerary} />
             <Redirect to='/home' />
           </Switch>
         ) : (
