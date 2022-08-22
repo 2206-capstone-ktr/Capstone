@@ -4,6 +4,7 @@ import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Login } from './components/Forms/Login';
 import { SignUp } from './components/Forms/SignUp';
 import Home from './components/Home';
+import { SingleItinerary } from './components/SingleItinerary';
 import { me } from './store';
 
 /**
@@ -15,20 +16,24 @@ class Routes extends Component {
   }
 
   render() {
-    const { isLoggedIn } = this.props;
+    const { isLoggedIn, userId } = this.props;
 
     return (
       <div>
         {isLoggedIn ? (
           <Switch>
             <Route path='/home' component={Home} />
+            <Route
+              path={`/users/${userId}/itineraries/:itineraryId`}
+              component={SingleItinerary}
+            />
             <Redirect to='/home' />
           </Switch>
         ) : (
           <Switch>
-            <Route path='/' exact component={Login} />
             <Route path='/login' component={Login} />
             <Route path='/signup' component={SignUp} />
+            <Route path='/' exact component={Login} />
           </Switch>
         )}
       </div>

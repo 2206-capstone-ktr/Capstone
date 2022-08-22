@@ -1,16 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import SingleItinerary from './SingleItinerary';
 
 /**
  * COMPONENT
  */
 export const Home = (props) => {
-  const { auth } = props;
+  const { user } = props;
+  console.log(user);
 
   return (
-    <div>
-      <h3>Welcome, {auth.firstName}</h3>
-    </div>
+    <>
+      <div>
+        <h3>Welcome, {user.firstName}</h3>
+      </div>
+      <SingleItinerary user={user} />
+    </>
   );
 };
 
@@ -19,7 +24,7 @@ export const Home = (props) => {
  */
 const mapState = (state) => {
   return {
-    auth: state.auth,
+    user: state.auth,
   };
 };
 
