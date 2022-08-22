@@ -16,6 +16,7 @@ const Navbar = ({ handleClick, isLoggedIn, auth }) => (
         <div className='right'>
           <a>Hi, {auth.email} </a>
           <Link to='/home'>Home</Link>
+          <Link to='/create'>Create Itinerary</Link>
           <a href='#' onClick={handleClick}>
             Logout
           </a>

@@ -34,3 +34,7 @@ nav {
 .logo {
   height: 100px;
 }
+
+.field1{
+  float: left;
+}
