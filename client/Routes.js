@@ -6,6 +6,7 @@ import { Login } from './components/Forms/Login';
 import { SignUp } from './components/Forms/SignUp';
 import Home from './components/Home';
 import { me } from './store';
+import activeItinerariesView from './views/activeItinerariesView';
 
 /**
  * COMPONENT
@@ -24,6 +25,10 @@ class Routes extends Component {
           <Switch>
             <Route path='/home' component={Home} />
             <Route path='/create' component={CreateItinerary} />
+            <Route
+              path='/activeitineraries'
+              component={activeItinerariesView}
+            />
             <Redirect to='/home' />
           </Switch>
         ) : (
