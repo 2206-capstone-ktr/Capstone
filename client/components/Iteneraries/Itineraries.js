@@ -1,14 +1,15 @@
 // import React from 'react';
 // import { fetchItineraries } from '../../store/Itinerary';
-// import {useState, useEffect} from 'react';
 // import Test from './test';
 // import { connect } from 'react-redux';
 // import { Link } from 'react-router-dom';
-// export  const DisplayItinerary (props) {
-//   useEffect (() => {
-//     props.fetchItineraries(user.id);
-//   }, []);
+// export class DisplayItinerary extends React.Component {
+//   componentDidMount() {
+//     this.props.fetchItineraries(this.props.user.id);
+//     console.log('hereeeeeeee', this.props);
+//   }
 
+//   render() {
 //     let userItineraries = this.props.itineraries ? this.props.itineraries : [];
 
 //     return (
@@ -34,7 +35,7 @@
 //       </div>
 //     );
 //   }
-
+// }
 // const mapState = (state) => {
 //   return {
 //     itineraries: state.itineraryReducer,

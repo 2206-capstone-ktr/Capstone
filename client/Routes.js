@@ -26,6 +26,7 @@ class Routes extends Component {
           <Switch>
             <Route path='/home' component={Home} />
             <Route path='/create' component={CreateItinerary} />
+            <Route path='/users/itineraries' component={DisplayItineraries} />
             <Redirect to='/home' />
           </Switch>
         ) : (
