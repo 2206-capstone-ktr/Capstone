@@ -1,17 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SingleItinerary from './SingleItinerary';
+// import Itineraries from './Iteneraries/Itineraries';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchItineraries } from '../store/Itinerary';
 
 /**
  * COMPONENT
  */
 export const Home = (props) => {
   const { user } = props;
-  console.log(user);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchItineraries(user.id));
+  }, []);
 
   return (
     <div>
-      <h3>Welcome, {user.firstName}</h3>
+      <h1>Welcome, {user.firstName}</h1>
     </div>
   );
 };

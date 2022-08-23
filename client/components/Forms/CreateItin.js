@@ -19,9 +19,9 @@ const CreateItinerary = () => {
         <label>Country</label>
         <input type='text' />
         <h4>Trip Date</h4>
-        <label for='start'>Start Date:</label>
+        <label htmlFor='start'>Start Date:</label>
         <input type='date' id='start' name='trip-start' />
-        <label for='end'>End Date:</label>
+        <label htmlFor='end'>End Date:</label>
         <input type='date' id='end' name='trip-end' />
       </div>
       <button type='submit'>Add Itinerary</button>

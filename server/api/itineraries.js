@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-  models: { Itinerary },
+  models: { Itinerary, User },
 } = require('../db');
 module.exports = router;
 
@@ -62,5 +62,15 @@ router.delete('/:itineraryId', async (req, res, next) => {
     }
   } catch (err) {
     next(err);
+  }
+});
+//Get User Itineraries
+router.get('/:userId', async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.userId);
+    const itineraries = await user.getItineraries();
+    res.send(itineraries);
+  } catch (error) {
+    next(error);
   }
 });

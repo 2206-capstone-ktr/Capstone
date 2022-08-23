@@ -5,7 +5,7 @@ import CreateItinerary from './components/Forms/CreateItin';
 import { Login } from './components/Forms/Login';
 import { SignUp } from './components/Forms/SignUp';
 import Home from './components/Home';
-import { SingleItinerary } from './components/SingleItinerary';
+import { DisplayItineraries } from './components/Iteneraries/Itineraries';
 import { me } from './store';
 
 /**
@@ -24,10 +24,6 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route path='/home' component={Home} />
-            <Route
-              path={`/users/${userId}/itineraries/:itineraryId`}
-              component={SingleItinerary}
-            />
             <Route path='/create' component={CreateItinerary} />
 
             <Redirect to='/home' />
