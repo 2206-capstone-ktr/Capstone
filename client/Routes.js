@@ -7,6 +7,7 @@ import { SignUp } from './components/Forms/SignUp';
 import Home from './components/Home';
 import { DisplayItineraries } from './components/Iteneraries/Itineraries';
 import { me } from './store';
+import activeItinerariesView from './views/activeItinerariesView';
 
 /**
  * COMPONENT
@@ -25,7 +26,6 @@ class Routes extends Component {
           <Switch>
             <Route path='/home' component={Home} />
             <Route path='/create' component={CreateItinerary} />
-
             <Redirect to='/home' />
           </Switch>
         ) : (
