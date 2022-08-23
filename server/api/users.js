@@ -4,7 +4,6 @@ const {
 } = require('../db');
 module.exports = router;
 
-// GET all users
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
@@ -18,7 +17,7 @@ router.get('/', async (req, res, next) => {
     next(err);
   }
 });
-// GET one user
+// get one user
 router.get('/:userId', async (req, res, next) => {
   try {
     if (req.user.isAdmin) {
@@ -31,7 +30,6 @@ router.get('/:userId', async (req, res, next) => {
     next(err);
   }
 });
-// GET all itineraries for a single user
 router.get('/:userId/itineraries', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId);
@@ -47,6 +45,20 @@ router.post('/', async (req, res, next) => {
     res.status(201).send(await User.create(req.body));
   } catch (err) {
     next(err);
+  }
+});
+
+//POST new itinerary for user
+router.post('/:userId/itinerary', async (req, res, next) => {
+  try {
+    const newItinerary = await Itinerary.create({
+      ...req.body,
+      userId: req.params.userId,
+    });
+    await newItinerary.addUser(req.params.userId);
+    res.send(newItinerary);
+  } catch (error) {
+    next(error);
   }
 });
 
