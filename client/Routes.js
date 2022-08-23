@@ -9,6 +9,7 @@ import Home from './components/Home';
 
 import { me } from './store';
 import activeItinerariesView from './views/activeItinerariesView';
+import currentItineraryView from './views/currentItineraryView';
 
 const Routes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.id);
@@ -25,6 +26,7 @@ const Routes = () => {
           <Route path='/create' component={CreateItinerary} />
 
           <Route path='/activeitineraries' component={activeItinerariesView} />
+          <Route path='/currentitinerary' component={currentItineraryView} />
           <Redirect to='/home' />
         </Switch>
       ) : (
