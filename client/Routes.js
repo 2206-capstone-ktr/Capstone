@@ -9,6 +9,7 @@ import Home from './components/Home';
 
 import { me } from './store';
 import activeItinerariesView from './views/activeItinerariesView';
+import currentItinerary from './views/currentItinerary';
 
 /**
  * COMPONENT
@@ -30,6 +31,7 @@ const Routes = () => {
           <Route path='/create' component={CreateItinerary} />
 
           <Route path='/activeitineraries' component={activeItinerariesView} />
+          <Route path='/currentitinerary' component={currentItinerary} />
           <Redirect to='/home' />
         </Switch>
       ) : (
