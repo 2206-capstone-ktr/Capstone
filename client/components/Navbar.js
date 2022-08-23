@@ -17,6 +17,7 @@ const Navbar = ({ handleClick, isLoggedIn, auth }) => (
           <a>Hi, {auth.email} </a>
           <Link to='/home'>Home</Link>
           <Link to='/create'>Create Itinerary</Link>
+          <Link to='/activeitineraries'>Active Itineraries</Link>
           <a href='#' onClick={handleClick}>
             Logout
           </a>
