@@ -37,4 +37,15 @@ nav {
 .logo {
   @apply h-24;
 }
+
+.btn {
+  @apply font-bold m-4 py-2 px-4 rounded-lg;
+}
+.btn-blue {
+  @apply bg-blue-500 text-white;
+}
+.btn-blue:hover {
+  @apply bg-blue-700;
+}
+
 }

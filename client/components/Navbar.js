@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { logout } from '../store';
 
 const Navbar = ({ handleClick, isLoggedIn, auth }) => (
-  <div>
+  <div className='bg-gray-300 flex'>
     <Link to='/'>
       <img
-        className='logo'
+        className='h-24'
         src='https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/kzwbqo3ipenftavyhgu9'
       />
     </Link>
