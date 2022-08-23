@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-  models: { User },
+  models: { User, Itinerary },
 } = require('../db');
 module.exports = router;
 
@@ -28,6 +28,15 @@ router.get('/:userId', async (req, res, next) => {
     }
   } catch (err) {
     next(err);
+  }
+});
+router.get('/:userId/itineraries', async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.userId);
+    const itineraries = await user.getItineraries();
+    res.send(itineraries);
+  } catch (error) {
+    next(error);
   }
 });
 //POST user
