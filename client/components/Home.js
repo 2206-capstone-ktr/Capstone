@@ -10,7 +10,7 @@ export const Home = (props) => {
 
   return (
     <div>
-      <h1>Welcome, {user.firstName}</h1>
+      <h3 className='text-3xl font-bold'>Welcome, {auth.firstName}</h3>
     </div>
   );
 };

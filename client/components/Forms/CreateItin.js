@@ -2,7 +2,7 @@ import React from 'react';
 
 const CreateItinerary = () => {
   return (
-    <div>
+    <div className='m-5'>
       <h3>Create Itinerary</h3>
 
       <h4>Basic Information</h4>
@@ -24,8 +24,12 @@ const CreateItinerary = () => {
         <label htmlFor='end'>End Date:</label>
         <input type='date' id='end' name='trip-end' />
       </div>
-      <button type='submit'>Add Itinerary</button>
-      <button type='submit'>Invite Others</button>
+      <button className='btn btn-blue' type='submit'>
+        Add Itinerary
+      </button>
+      <button className='btn btn-blue' type='submit'>
+        Invite Others
+      </button>
     </div>
   );
 };
