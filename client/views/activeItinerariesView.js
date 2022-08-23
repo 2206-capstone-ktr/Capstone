@@ -1,11 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ActiveItinCard from '../components/ActiveItinCard';
+import { fetchItineraries } from '../store/itinerary';
 
 export const activeItinerariesView = (props) => {
-  const { auth } = props;
-
   const itins = [
     {
       id: 1,
@@ -25,6 +24,15 @@ export const activeItinerariesView = (props) => {
     },
   ];
 
+  const user = useSelector((state) => state.auth);
+  const itineraries = useSelector((state) => state.itinerary);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchItineraries(user.id));
+  }, []);
+
   return (
     <div>
       <div className='flex justify-center'>
@@ -33,7 +41,7 @@ export const activeItinerariesView = (props) => {
         </Link>
       </div>
       <div className='flex justify-center flex-col'>
-        {itins.map((itin) => (
+        {itineraries?.map((itin) => (
           <ActiveItinCard key={itin.id} itin={itin} />
         ))}
       </div>
@@ -41,13 +49,7 @@ export const activeItinerariesView = (props) => {
   );
 };
 
-const mapState = (state) => {
-  return {
-    auth: state.auth,
-  };
-};
-
-export default connect(mapState)(activeItinerariesView);
+export default activeItinerariesView;
 
 //------------------------------
 // import React from 'react';
