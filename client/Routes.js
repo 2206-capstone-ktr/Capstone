@@ -10,17 +10,12 @@ import Home from './components/Home';
 import { me } from './store';
 import activeItinerariesView from './views/activeItinerariesView';
 
-/**
- * COMPONENT
- */
 const Routes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(me());
   }, []);
-
-  // const { isLoggedIn, userId } = this.props;
 
   return (
     <div>

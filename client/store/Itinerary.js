@@ -24,7 +24,7 @@ export const fetchItineraries = (userId) => async (dispatch) => {
 };
 
 //Reducer
-export default function itineraryReducer(state = [], action) {
+export default function (state = [], action) {
   switch (action.type) {
     case GET_ITINERARIES:
       return action.itineraries;
