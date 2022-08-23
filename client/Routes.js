@@ -11,17 +11,12 @@ import { me } from './store';
 import activeItinerariesView from './views/activeItinerariesView';
 import currentItineraryView from './views/currentItineraryView';
 
-/**
- * COMPONENT
- */
 const Routes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(me());
   }, []);
-
-  // const { isLoggedIn, userId } = this.props;
 
   return (
     <div>
