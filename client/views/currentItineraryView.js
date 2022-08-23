@@ -1,9 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
+
 import CurrentEventCard from '../components/CurrentEventCard';
 
-export const currentItinerary = (props) => {
-  const { auth } = props;
+export const currentItineraryView = (props) => {
   const itins = [
     {
       id: 1,
@@ -27,14 +26,17 @@ export const currentItinerary = (props) => {
     {
       id: 1,
       name: 'Surfing',
+      type: 'sport',
     },
     {
       id: 2,
       name: 'Eating pizza',
+      type: 'eating',
     },
     {
       id: 3,
       name: 'Taking tour bus',
+      type: 'views',
     },
   ];
 
@@ -52,19 +54,11 @@ export const currentItinerary = (props) => {
           return <button key={day}>{day}</button>;
         })}
       </div>
-      <div className='flex justify-center flex-col'>
-        {events.map((event) => (
-          <CurrentEventCard key={event.id} event={event} />
-        ))}
-      </div>
+      {events?.map((event) => (
+        <CurrentEventCard key={event.id} event={event} />
+      ))}
     </div>
   );
 };
 
-const mapState = (state) => {
-  return {
-    auth: state.auth,
-  };
-};
-
-export default connect(mapState)(currentItinerary);
+export default currentItineraryView;

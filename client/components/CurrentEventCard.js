@@ -1,12 +1,12 @@
 import React from 'react';
 
 function CurrentEventCard(props) {
-  const events = props.events;
+  const event = props.event;
 
   return (
     <a
       href='#'
-      key={events.id}
+      key={event.id}
       className='flex flex-col items-center m-5 bg-white rounded-lg border shadow-lg md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'
     >
       <img
@@ -16,8 +16,9 @@ function CurrentEventCard(props) {
       />
       <div className='flex flex-col justify-between p-4 leading-normal'>
         <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-          {events.name}
+          {event.name}
         </h5>
+        <p>{event.type}</p>
       </div>
     </a>
   );
