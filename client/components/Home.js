@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 /**
  * COMPONENT
@@ -30,6 +31,16 @@ export const Home = (props) => {
           alt=''
         />
       </div>
+      <Link to={'/activeitineraries'}>
+        <button className='btn btn-blue' type='submit'>
+          Current Itineraries
+        </button>
+      </Link>
+      <Link to={'/create'}>
+        <button className='btn btn-blue' type='submit'>
+          Create an Itinerary
+        </button>
+      </Link>
     </div>
   );
 };
