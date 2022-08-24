@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { createItinerary, fetchItineraries } from '../../store/Itinerary';
+import { createItinerary, fetchItineraries } from '../../store/itinerary';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
