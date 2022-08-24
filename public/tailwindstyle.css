@@ -790,8 +790,13 @@ nav {
   height: 1rem;
 }
 
+<<<<<<< HEAD
 .h-96 {
   height: 24rem;
+=======
+.w-full {
+  width: 100%;
+>>>>>>> eaee26e38a024c1c94eb40a5a1a597ff87141a9a
 }
 
 .w-96 {
@@ -806,16 +811,23 @@ nav {
   width: 3rem;
 }
 
+<<<<<<< HEAD
 .w-full {
   width: 100%;
 }
 
+=======
+>>>>>>> eaee26e38a024c1c94eb40a5a1a597ff87141a9a
 .max-w-xl {
   max-width: 36rem;
 }
 
 .shrink {
   flex-shrink: 1;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
 
 .grow {
@@ -828,6 +840,10 @@ nav {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.flex-row {
+  flex-direction: row;
 }
 
 .flex-col {
@@ -908,9 +924,15 @@ nav {
   border-color: rgb(79 70 229 / var(--tw-border-opacity));
 }
 
+<<<<<<< HEAD
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
+=======
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+>>>>>>> eaee26e38a024c1c94eb40a5a1a597ff87141a9a
 }
 
 .bg-blue-300 {
@@ -971,16 +993,6 @@ nav {
   padding-right: 1rem;
 }
 
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-
 .pr-5 {
   padding-right: 1.25rem;
 }
@@ -1028,10 +1040,13 @@ nav {
   text-transform: capitalize;
 }
 
+<<<<<<< HEAD
 .leading-tight {
   line-height: 1.25;
 }
 
+=======
+>>>>>>> eaee26e38a024c1c94eb40a5a1a597ff87141a9a
 .leading-normal {
   line-height: 1.5;
 }
@@ -1055,11 +1070,14 @@ nav {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
+<<<<<<< HEAD
 .text-gray-700 {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
+=======
+>>>>>>> eaee26e38a024c1c94eb40a5a1a597ff87141a9a
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -1116,11 +1134,6 @@ nav {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.hover\:text-gray-700:hover {
-  --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
-}
-
 @media (prefers-color-scheme: dark) {
   .dark\:border-gray-700 {
     --tw-border-opacity: 1;
@@ -1145,11 +1158,6 @@ nav {
   .dark\:hover\:bg-gray-700:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(55 65 81 / var(--tw-bg-opacity));
-  }
-
-  .dark\:hover\:text-white:hover {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
   }
 }
 
