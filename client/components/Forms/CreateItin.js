@@ -7,7 +7,7 @@ const CreateItinerary = () => {
 
       <h4>Basic Information</h4>
 
-      <div className='row'>
+      <div className=''>
         <label>Itinerary Name</label>
         <input type='text' />
         <label>Destination</label>

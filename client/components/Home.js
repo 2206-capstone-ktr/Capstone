@@ -31,16 +31,18 @@ export const Home = (props) => {
           alt=''
         />
       </div>
-      <Link to={'/activeitineraries'}>
-        <button className='btn btn-blue' type='submit'>
-          Current Itineraries
-        </button>
-      </Link>
-      <Link to={'/create'}>
-        <button className='btn btn-blue' type='submit'>
-          Create an Itinerary
-        </button>
-      </Link>
+      <div className='flex justify-around my-16'>
+        <Link to={'/activeitineraries'}>
+          <button className='btn btn-blue w-96 h-36' type='submit'>
+            Current Itineraries
+          </button>
+        </Link>
+        <Link to={'/create'}>
+          <button className='btn btn-blue w-96 h-36' type='submit'>
+            Create an Itinerary
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };
