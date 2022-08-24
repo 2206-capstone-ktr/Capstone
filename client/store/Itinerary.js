@@ -29,18 +29,18 @@ export const fetchItineraries = (userId) => async (dispatch) => {
     return error;
   }
 };
-export const createItinerary = (itinerary, userId) => async (dispatch) => {
-  try {
-    const { data } = await axios.post(
-      `/api/users/${userId}/itinerary`,
-      itinerary
-    );
-    dispatch(setItinerary(data));
-    history.push(`/activeitineraries`);
-  } catch (error) {
-    return error;
-  }
-};
+export const createItinerary =
+  (itinerary, userId, history) => async (dispatch) => {
+    try {
+      const { data } = await axios.post(
+        `/api/users/${userId}/itinerary`,
+        itinerary
+      );
+      dispatch(setItinerary(data));
+    } catch (error) {
+      return error;
+    }
+  };
 
 //Reducer
 export default function itinerary(state = [], action) {
