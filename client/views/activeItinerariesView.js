@@ -18,7 +18,6 @@ export const activeItinerariesView = (props) => {
   const onClickHandler = async (itinerary) => {
     dispatch(fetchItinerary(itinerary.id));
   };
-
   return (
     <div>
       <div className='flex justify-center'>
