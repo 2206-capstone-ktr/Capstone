@@ -2,6 +2,7 @@ import axios from 'axios';
 // action type
 
 const GET_ITINERARIES = 'GET_ITINERARIES';
+const SET_ITINERARY = 'SET_ITINERARY';
 
 // action creator(s)
 
@@ -9,6 +10,12 @@ export const getItineraries = (itineraries) => {
   return {
     type: GET_ITINERARIES,
     itineraries,
+  };
+};
+export const setItinerary = (itinerary) => {
+  return {
+    type: SET_ITINERARY,
+    itinerary,
   };
 };
 
@@ -22,12 +29,29 @@ export const fetchItineraries = (userId) => async (dispatch) => {
     return error;
   }
 };
+export const createItinerary =
+  (itinerary, userId, history) => async (dispatch) => {
+    try {
+      const { data } = await axios.post(
+        `/api/users/${userId}/itinerary`,
+        itinerary
+      );
+      dispatch(setItinerary(data));
+    } catch (error) {
+      return error;
+    }
+  };
 
 //Reducer
 export default function itinerary(state = [], action) {
   switch (action.type) {
     case GET_ITINERARIES:
       return action.itineraries;
+    case SET_ITINERARY:
+      return {
+        ...state,
+        itineraries: [...state.itineraries, action.itinerary],
+      };
     default:
       return state;
   }
