@@ -1,6 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
-const CreateItinerary = () => {
+const CreateItinerary = (props) => {
+  console.log(props);
+  const dispatch = useDispatch;
+
   return (
     <div className='m-5'>
       <h3>Create Itinerary</h3>
