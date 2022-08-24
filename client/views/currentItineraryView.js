@@ -1,13 +1,14 @@
 import React from 'react';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchItinerary } from '../store/singleItinerary';
 import CurrentEventCard from '../components/CurrentEventCard';
+import CurrentItinCard from '../components/CurrentItinCard';
 
 export const currentItineraryView = (props) => {
-  const user = useSelector((state) => state.auth);
-  const itineraries = useSelector((state) => state.itinerary);
+  const itinerary = useSelector((state) => state.singleItinerary);
 
+  // console.log(itinerary);
   // const days = [1, 2, 3, 4];
   const events = [
     {
@@ -46,11 +47,13 @@ export const currentItineraryView = (props) => {
   return (
     <div className='flex bg-white rounded-lg font-[Poppins]'>
       <div>
-        <div>{itineraries.name}</div>
-        <br></br>
-        <div>
-          {itineraries.startDate} to {itineraries.endDate}
+        <div className='flex justify-center flex-col'>
+          {/* {itinerary?.map((itin) => (
+            <CurrentItinCard key={itin.id} itin={itin} /> */}
+          {itinerary.name}
         </div>
+        <br></br>
+        <div>hi</div>
         <br></br>
         <div className='flex justify-center'>
           Days :
