@@ -17,14 +17,14 @@ export const getItinerary = (itinerary) => {
 export const fetchItinerary = (itineraryId) => async (dispatch) => {
   try {
     const { data } = await axios.get(`/api/itineraries/${itineraryId}`);
-    dispatch(getItineraries(data));
+    dispatch(getItinerary(data));
   } catch (error) {
     return error;
   }
 };
 
 //Reducer
-export default function (state = {}, action) {
+export default function singleItinerary(state = {}, action) {
   switch (action.type) {
     case GET_ITINERARY:
       return action.itinerary;
