@@ -47,13 +47,13 @@ export const currentItineraryView = (props) => {
   return (
     <div className='flex bg-white rounded-lg font-[Poppins]'>
       <div>
-        <div className='flex justify-center flex-col'>
-          {/* {itinerary?.map((itin) => (
-            <CurrentItinCard key={itin.id} itin={itin} /> */}
+        <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
           {itinerary.name}
-        </div>
+        </h5>
         <br></br>
-        <div>hi</div>
+        <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
+          {itinerary.startDate} to {itinerary.endDate}
+        </p>
         <br></br>
         <div className='flex justify-center'>
           Days :
