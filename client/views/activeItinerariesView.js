@@ -28,7 +28,6 @@ export const activeItinerariesView = (props) => {
       alert('oops something went wrong');
     }
   };
-
   return (
     <div>
       <div className='flex justify-center'>
