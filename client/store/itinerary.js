@@ -67,7 +67,6 @@ export default function itinerary(state = [], action) {
         itineraries: [...state.itineraries, action.itinerary],
       };
     case DELETE_ITINERARY:
-      console.log(state);
       return state.itinararies.filter(
         (itinerary) => itinerary.id !== action.id
       );
