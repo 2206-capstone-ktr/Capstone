@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 function ActiveItinCard(props) {
   const itin = props.itin;
+  //const fetch = props.onClick.
 
   return (
     <div className='flex flex-row'>
@@ -32,7 +33,12 @@ function ActiveItinCard(props) {
           </p>
         </div>
       </Link>
-      <button className='btn btn-blue'>Delete</button>
+      <button
+        className='btn btn-blue'
+        onClick={() => props.deleteClick(itin.id)}
+      >
+        Delete
+      </button>
     </div>
   );
 }
