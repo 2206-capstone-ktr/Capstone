@@ -8,17 +8,19 @@ const Search = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   return (
-    <div>
-      <h1>Search for entertainment</h1>
-      <label>Search</label>
-      <input
-        className='border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200 pac-target-input'
-        type='text'
-        placeholder='Example: Paris...'
-        id='location-search'
-        name='location-search'
-        autoComplete='off'
-      ></input>
+    <div className='flex flex-col'>
+      <div>
+        <h1>Search for entertainment</h1>
+        <label>Search</label>
+        <input
+          className='border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200 pac-target-input'
+          type='text'
+          placeholder='Example: Paris...'
+          id='location-search'
+          name='location-search'
+          autoComplete='off'
+        ></input>
+      </div>
       <div>
         <Map />
       </div>
