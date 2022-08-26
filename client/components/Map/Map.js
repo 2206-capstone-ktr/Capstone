@@ -4,18 +4,18 @@ import GoogleMapReact from 'google-map-react';
 import useStyles from './styles';
 
 const Map = () => {
-  const coordinates = { lat: 41.7, lng: 87 };
-
+  const coordinates = { lat: 41.7, lng: -87 };
+  const classes = useStyles();
   return (
-    <div className='h-100 w-100'>
+    <div className={classes.mapContainer}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyBhAB7cTN69-Jv-oqtB9fn67SHoVKgqtn8' }}
         defaultCenter={coordinates}
         center={coordinates}
-        defaultZoom={14}
+        defaultZoom={5}
         margin={[50, 50, 50, 50]}
-        options={''}
-        //onChange={''}
+        options={{ zoomControl: true }}
+        // onChange={''}
         // onChildClick={''}
       ></GoogleMapReact>
     </div>
