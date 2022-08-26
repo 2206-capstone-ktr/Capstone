@@ -1,8 +1,9 @@
 import React from 'react';
-import { Autocomplete } from '@react-google-maps/api';
+import { Autocomplete, Typography } from '@react-google-maps/api';
 import { useSelector, useDispatch } from 'react-redux';
 import useStyles from './styles';
 import Map from '../Map/Map';
+import List from '../List/List';
 
 const Search = () => {
   const classes = useStyles();
@@ -10,7 +11,7 @@ const Search = () => {
   return (
     <div className={classes.gridContainer}>
       <div>
-        <h1>Search for entertainment</h1>
+        <h1>Restaurants, Hotels & Attractions</h1>
         <label>Search</label>
         <input
           className='border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200 pac-target-input'
@@ -20,6 +21,7 @@ const Search = () => {
           name='location-search'
           autoComplete='off'
         ></input>
+        <List />
       </div>
       <div>
         <Map />
