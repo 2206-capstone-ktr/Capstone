@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import useStyles from './styles';
 import Map from '../Map/Map';
 import List from '../List/List';
+import Holdinginfo from '../../holdinginfo';
 
 const Search = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+
   return (
     <div className={classes.gridContainer}>
       <div>
@@ -24,7 +26,7 @@ const Search = () => {
         <List />
       </div>
       <div>
-        <Map />
+        <Holdinginfo />
       </div>
     </div>
   );

@@ -6,37 +6,47 @@ import Map from './components/Map/Map';
 import Navbar from './components/Navbar';
 import PlaceDetails from './components/PlaceDetails/PlaceDetails';
 
-const [places, setPlaces] = useState([]);
-const [coordinates, setCoordinates] = useState({});
-const [bounds, setBounds] = useState(null);
+const Holdinginfo = () => {
+  const [places, setPlaces] = useState([]);
+  const [coordinates, setCoordinates] = useState({});
+  const [bounds, setBounds] = useState({});
 
-useEffect(() => {
-  getPlacesData().then((data) => {
-    console.log(data);
-    setPlaces(data);
-  });
-}, []);
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        setCoordinates({ lat: latitude, lng: longitude });
+      }
+    );
+  }, []);
 
-<CssBaseline />;
-{
-  /* <Header /> */
-}
-<Grid container spacing={3} style={{ width: '100%' }}>
-  <Grid item xs={12} md={4}>
-    <List />
-  </Grid>
-  <Grid item xs={12} md={8}>
-    <Map
-      setCoordinates={setCoordinates}
-      setBounds={setBounds}
-      coordinates={coordinates}
-    />
-  </Grid>
-</Grid>;
-
+  useEffect(() => {
+    console.log(bounds, 'hello');
+    getPlacesData(bounds.sw, bounds.ne).then((data) => {
+      setPlaces(data);
+    });
+  }, [coordinates, bounds]);
+  return (
+    <div>
+      <CssBaseline />;
+      <Grid container spacing={3} style={{ width: '100%' }}>
+        <Grid item xs={12} md={4}></Grid>
+        <Grid item xs={12} md={8}>
+          <Map
+            setCoordinates={setCoordinates}
+            setBounds={setBounds}
+            coordinates={coordinates}
+          />
+        </Grid>
+      </Grid>
+    </div>
+  );
+};
 
 ////--------------MAP--------------
-onChange={(e) => {
-    console.log('hi', e);
-    setCoordinates({ lat: e.center.lat, lng: e.center.lng });
-  }}
+// onChange={(e) => {
+//     console.log('hi', e);
+//     setCoordinates({ lat: e.center.lat, lng: e.center.lng });
+//   }}
+// }
+
+export default Holdinginfo;
