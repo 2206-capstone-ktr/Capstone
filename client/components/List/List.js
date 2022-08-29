@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PlaceDetails from '../PlaceDetails/PlaceDetails';
 
 import {
   CircularProgress,
@@ -14,6 +15,17 @@ const List = () => {
   const classes = useStyles();
   const [type, setType] = useState('restaurants');
   const [rating, setRating] = useState('');
+  const places = [
+    { name: 'First Place' },
+    { name: 'Best Beer' },
+    { name: 'Best Steak' },
+    { name: 'Best Beer' },
+    { name: 'Best Steak' },
+    { name: 'Best Beer' },
+    { name: 'Best Steak' },
+    { name: 'Best Beer' },
+    { name: 'Best Steak' },
+  ];
 
   return (
     <div className={classes.container}>
@@ -35,6 +47,13 @@ const List = () => {
           <MenuItem value={4.5}>Above 4.5</MenuItem>
         </Select>
       </FormControl>
+      <Grid container spacing={3} className={classes.list}>
+        {places?.map((place, i) => (
+          <Grid item key={i} xs={12}>
+            <PlaceDetails place={place} />
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
 };

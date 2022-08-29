@@ -1,5 +1,5 @@
 import React from 'react';
-import { Autocomplete, Typography } from '@react-google-maps/api';
+import { Autocomplete } from '@react-google-maps/api';
 import { useSelector, useDispatch } from 'react-redux';
 import useStyles from './styles';
 import Map from '../Map/Map';
@@ -19,7 +19,7 @@ const Search = () => {
           placeholder='Example: Chicago'
           id='location-search'
           name='location-search'
-          autoComplete='off'
+          autoComplete='on'
         ></input>
         <List />
       </div>

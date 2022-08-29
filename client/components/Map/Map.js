@@ -15,7 +15,10 @@ const Map = () => {
         defaultZoom={13}
         margin={[50, 50, 50, 50]}
         options={{ zoomControl: true }}
-        // onChange={''}
+        // onChange={(e) => {
+        //   console.log('hi', e);
+        //   setCoordinates({ lat: e.center.lat, lng: e.center.lng });
+        // }}
         // onChildClick={''}
       ></GoogleMapReact>
     </div>
