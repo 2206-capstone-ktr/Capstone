@@ -709,10 +709,6 @@ nav {
   visibility: visible;
 }
 
-.\!visible {
-  visibility: visible !important;
-}
-
 .invisible {
   visibility: hidden;
 }
@@ -731,11 +727,6 @@ nav {
 
 .relative {
   position: relative;
-}
-
-.sticky {
-  position: -webkit-sticky;
-  position: sticky;
 }
 
 .m-5 {
@@ -787,26 +778,6 @@ nav {
 
 .table {
   display: table;
-}
-
-.table-cell {
-  display: table-cell;
-}
-
-.table-footer-group {
-  display: table-footer-group;
-}
-
-.table-header-group {
-  display: table-header-group;
-}
-
-.table-row-group {
-  display: table-row-group;
-}
-
-.table-row {
-  display: table-row;
 }
 
 .grid {
@@ -1217,14 +1188,6 @@ nav {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-}
-
-.\!transition {
-  transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter !important;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter !important;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter !important;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
-  transition-duration: 150ms !important;
 }
 
 .ease-in-out {
