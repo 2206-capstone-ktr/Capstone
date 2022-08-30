@@ -23,7 +23,7 @@ const Map = ({
         bootstrapURLKeys={{ key: 'AIzaSyBhAB7cTN69-Jv-oqtB9fn67SHoVKgqtn8' }}
         defaultCenter={coordinates}
         center={coordinates}
-        defaultZoom={13}
+        defaultZoom={15}
         margin={[50, 50, 50, 50]}
         options={{ zoomControl: true }}
         onChange={(e) => {
@@ -41,7 +41,7 @@ const Map = ({
               lng={Number(place.longitude)}
               key={i}
             >
-              {!isDesktop ? (
+              {isDesktop ? (
                 <LocationOnOutlinedIcon color='primary' fontSize='large' />
               ) : (
                 <Paper elevation={3} className={classes.paper}>
