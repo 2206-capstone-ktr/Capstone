@@ -11,8 +11,9 @@ import {
   MenuItem,
   Select,
   FormControl,
+  InputLabel,
 } from '@material-ui/core';
-
+import { useState } from 'react';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PhoneIcon from '@material-ui/icons/Phone';
 import Rating from '@material-ui/lab/Rating';
@@ -20,7 +21,9 @@ import useStyles from './styles';
 
 const PlaceDetails = ({ place }) => {
   const classes = useStyles();
-  const handleclick = () => {};
+  const handleclick = () => {
+    console.log('clicked', place.name);
+  };
   const [itin, setItin] = useState('');
   return (
     <Card elevation={6}>
