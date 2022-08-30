@@ -11,7 +11,7 @@ const Search = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [places, setPlaces] = useState([]);
-  console.log('HEERE', places);
+
   return (
     <div className={classes.gridContainer}>
       <div>
