@@ -8,7 +8,11 @@ import {
   CardContent,
   CardActions,
   Chip,
+  MenuItem,
+  Select,
+  FormControl,
 } from '@material-ui/core';
+
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PhoneIcon from '@material-ui/icons/Phone';
 import Rating from '@material-ui/lab/Rating';
@@ -16,7 +20,8 @@ import useStyles from './styles';
 
 const PlaceDetails = ({ place }) => {
   const classes = useStyles();
-
+  const handleclick = () => {};
+  const [itin, setItin] = useState('');
   return (
     <Card elevation={6}>
       <CardMedia
@@ -98,18 +103,27 @@ const PlaceDetails = ({ place }) => {
         )}
         <CardActions>
           <Button
-            sixe='small'
+            size='small'
             color='primary'
             onClick={() => window.open(place.web_url, '_blank')}
           >
             Trip Advisor
           </Button>
           <Button
-            sixe='small'
+            size='small'
             color='primary'
             onClick={() => window.open(place.website, '_blank')}
           >
             Website
+          </Button>
+          <FormControl className={classes.formControl}>
+            <InputLabel>Select Itinerary</InputLabel>
+            <Select value={itin} onChange={(e) => setItin(e.target.value)}>
+              <MenuItem value='restaurants'>Restaurants</MenuItem>
+            </Select>
+          </FormControl>
+          <Button size='small' color='primary' onClick={handleclick}>
+            Add to Itinerary
           </Button>
         </CardActions>
       </CardContent>
