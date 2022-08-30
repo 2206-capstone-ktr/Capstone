@@ -32,43 +32,45 @@ const Map = ({
         }}
         onChildClick={(child) => setChildClicked(child)}
       >
-        {places?.map((place, i) => (
-          <div
-            className={classes.markerContainer}
-            lat={Number(place.latitude)}
-            lng={Number(place.longitude)}
-            key={i}
-          >
-            {!isDesktop ? (
-              <LocationOnOutlinedIcon color='primary' fontSize='large' />
-            ) : (
-              <Paper elevation={3} className={classes.paper}>
-                <Typography
-                  className={classes.typography}
-                  variant='subtitle2'
-                  gutterBottom
-                >
-                  {place.name}
-                </Typography>
-                <img
-                  className={classes.pointer}
-                  src={
-                    place.photo
-                      ? place.photo.images.large.url
-                      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYxlUZGKnAXRHPw5oFUdBw_kRzsAg8T9oLvw&usqp=CAU'
-                  }
-                  alt={place.name}
-                />
-                <Rating
-                  name='read-only'
-                  size='small'
-                  value={Number(place.rating)}
-                  readOnly
-                />
-              </Paper>
-            )}
-          </div>
-        ))}
+        {places
+          ?.filter((place) => place.latitude)
+          .map((place, i) => (
+            <div
+              className={classes.markerContainer}
+              lat={Number(place.latitude)}
+              lng={Number(place.longitude)}
+              key={i}
+            >
+              {!isDesktop ? (
+                <LocationOnOutlinedIcon color='primary' fontSize='large' />
+              ) : (
+                <Paper elevation={3} className={classes.paper}>
+                  <Typography
+                    className={classes.typography}
+                    variant='subtitle2'
+                    gutterBottom
+                  >
+                    {place.name}
+                  </Typography>
+                  <img
+                    className={classes.pointer}
+                    src={
+                      place.photo
+                        ? place.photo.images.large.url
+                        : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYxlUZGKnAXRHPw5oFUdBw_kRzsAg8T9oLvw&usqp=CAU'
+                    }
+                    alt={place.name}
+                  />
+                  <Rating
+                    name='read-only'
+                    size='small'
+                    value={Number(place.rating)}
+                    readOnly
+                  />
+                </Paper>
+              )}
+            </div>
+          ))}
       </GoogleMapReact>
     </div>
   );
