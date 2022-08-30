@@ -4,6 +4,7 @@ import axios from 'axios';
 const GET_ITINERARIES = 'GET_ITINERARIES';
 const SET_ITINERARY = 'SET_ITINERARY';
 const DELETE_ITINERARY = 'DELETE_ITINERARY';
+const ADD_EVENT = 'ADD_EVENT';
 
 // action creator(s)
 
@@ -22,6 +23,12 @@ export const setItinerary = (itinerary) => {
 export const deleteItinerary = (itinerary) => {
   return {
     type: DELETE_ITINERARY,
+    itinerary,
+  };
+};
+export const addEvent = (itinerary) => {
+  return {
+    type: ADD_EVENT,
     itinerary,
   };
 };
@@ -55,6 +62,17 @@ export const deleteItineraryById = (itineraryId) => async (dispatch) => {
     return error;
   }
 };
+export const addEventThunk = (itineraryId, event) => async (dispatch) => {
+  try {
+    const { data } = await axios.post(
+      `/api/itineraries/${itineraryId}/addEvent`,
+      event
+    );
+    dispatch(addEvent(data));
+  } catch (error) {
+    return error;
+  }
+};
 
 //Reducer
 export default function itinerary(state = [], action) {
@@ -70,7 +88,8 @@ export default function itinerary(state = [], action) {
       return state.itinararies.filter(
         (itinerary) => itinerary.id !== action.id
       );
-
+    case ADD_EVENT:
+      return state;
     default:
       return state;
   }
