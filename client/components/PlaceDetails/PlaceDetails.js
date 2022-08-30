@@ -8,7 +8,12 @@ import {
   CardContent,
   CardActions,
   Chip,
+  MenuItem,
+  Select,
+  FormControl,
+  InputLabel,
 } from '@material-ui/core';
+import { useState } from 'react';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PhoneIcon from '@material-ui/icons/Phone';
 import Rating from '@material-ui/lab/Rating';
@@ -16,6 +21,10 @@ import useStyles from './styles';
 
 const PlaceDetails = ({ place, selected, refProp }) => {
   const classes = useStyles();
+  const handleclick = () => {
+    console.log('clicked', place.name);
+  };
+  // const [itin, setItin] = useState('');
 
   if (selected)
     refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -89,18 +98,27 @@ const PlaceDetails = ({ place, selected, refProp }) => {
         )}
         <CardActions>
           <Button
-            sixe='small'
+            size='small'
             color='primary'
             onClick={() => window.open(place.web_url, '_blank')}
           >
             Trip Advisor
           </Button>
           <Button
-            sixe='small'
+            size='small'
             color='primary'
             onClick={() => window.open(place.website, '_blank')}
           >
             Website
+          </Button>
+          {/* <FormControl className={classes.formControl}>
+            <InputLabel>Select Itinerary</InputLabel>
+            <Select value={itin} onChange={(e) => setItin(e.target.value)}>
+              <MenuItem value='restaurants'>Itin</MenuItem>
+            </Select>
+          </FormControl> */}
+          <Button size='small' color='primary' onClick={handleclick}>
+            Add to Itinerary
           </Button>
         </CardActions>
       </CardContent>
