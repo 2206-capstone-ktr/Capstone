@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Autocomplete } from '@react-google-maps/api';
 import { useSelector, useDispatch } from 'react-redux';
+import Rating from '@material-ui/lab/Rating';
 import useStyles from './styles';
 import Map from '../Map/Map';
 import List from '../List/List';
@@ -9,6 +10,7 @@ import Holdinginfo from '../../holdinginfo';
 const Search = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const [places, setPlaces] = useState([]);
 
   return (
     <div className={classes.gridContainer}>
@@ -23,10 +25,10 @@ const Search = () => {
           name='location-search'
           autoComplete='on'
         ></input>
-        <List />
+        <List places={places} />
       </div>
       <div>
-        <Holdinginfo />
+        <Holdinginfo placesState={setPlaces} />
       </div>
     </div>
   );

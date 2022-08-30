@@ -5,11 +5,13 @@ import List from './components/List/List';
 import Map from './components/Map/Map';
 import Navbar from './components/Navbar';
 import PlaceDetails from './components/PlaceDetails/PlaceDetails';
+import Rating from '@material-ui/lab/Rating';
 
-const Holdinginfo = () => {
+const Holdinginfo = ({ placesState }) => {
   const [places, setPlaces] = useState([]);
   const [coordinates, setCoordinates] = useState({});
   const [bounds, setBounds] = useState({});
+  const [childClick, setChildClicked] = useState(null);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -20,13 +22,14 @@ const Holdinginfo = () => {
   }, []);
 
   useEffect(() => {
-    console.log(bounds, 'hello');
     getPlacesData(bounds.sw, bounds.ne).then((data) => {
       setPlaces(data);
+      placesState(data);
     });
   }, [coordinates, bounds]);
   return (
     <div>
+      {/* <List places={places} /> */}
       <CssBaseline />;
       <Grid container spacing={3} style={{ width: '100%' }}>
         <Grid item xs={12} md={4}></Grid>
@@ -35,18 +38,13 @@ const Holdinginfo = () => {
             setCoordinates={setCoordinates}
             setBounds={setBounds}
             coordinates={coordinates}
+            places={places}
+            setChildClicked={setChildClicked}
           />
         </Grid>
       </Grid>
     </div>
   );
 };
-
-////--------------MAP--------------
-// onChange={(e) => {
-//     console.log('hi', e);
-//     setCoordinates({ lat: e.center.lat, lng: e.center.lng });
-//   }}
-// }
 
 export default Holdinginfo;
