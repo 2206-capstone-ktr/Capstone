@@ -15,7 +15,10 @@ const Search = () => {
   const [places, setPlaces] = useState([]);
   const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [childClicked, setChildClicked] = useState(null);
-  const [coordinates, setCoordinates] = useState({});
+  const [coordinates, setCoordinates] = useState({
+    lat: 41.8826,
+    lng: 87.6226,
+  });
   const [bounds, setBounds] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [type, setType] = useState('restaurants');

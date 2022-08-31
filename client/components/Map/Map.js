@@ -16,13 +16,16 @@ const Map = ({
 }) => {
   const classes = useStyles();
   const isDesktop = useMediaQuery('(min-width:600px)');
-  //const defCenter = Object.assign({}, coordinates);
+  const defCenter = {
+    lat: 41.8826,
+    lng: 87.6226,
+  };
 
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyBhAB7cTN69-Jv-oqtB9fn67SHoVKgqtn8' }}
-        defaultCenter={coordinates}
+        defaultCenter={defCenter}
         center={coordinates}
         defaultZoom={15}
         margin={[50, 50, 50, 50]}
