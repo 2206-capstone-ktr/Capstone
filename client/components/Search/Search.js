@@ -25,6 +25,7 @@ const Search = () => {
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
         setCoordinates({ lat: latitude, lng: longitude });
+        console.log(coordinates, 'This is  center');
       }
     );
   }, []);

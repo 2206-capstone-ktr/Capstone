@@ -16,6 +16,7 @@ const Map = ({
 }) => {
   const classes = useStyles();
   const isDesktop = useMediaQuery('(min-width:600px)');
+  //const defCenter = Object.assign({}, coordinates);
 
   return (
     <div className={classes.mapContainer}>
@@ -28,6 +29,7 @@ const Map = ({
         options={{ zoomControl: true }}
         onChange={(e) => {
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
+
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
         onChildClick={(child) => setChildClicked(child)}
