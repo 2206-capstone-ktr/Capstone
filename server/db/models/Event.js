@@ -53,7 +53,6 @@ const Event = db.define('event', {
 
 module.exports = Event;
 
-
 // {
 //   "location_id": "3172098",
 //   "name": "Butcher Bar",

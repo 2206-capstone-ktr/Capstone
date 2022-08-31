@@ -66,6 +66,7 @@ const List = ({
                   place={place}
                   selected={Number(childClicked === i)}
                   refProp={elRefs[i]}
+                  type={type}
                 />
               </Grid>
             ))}
