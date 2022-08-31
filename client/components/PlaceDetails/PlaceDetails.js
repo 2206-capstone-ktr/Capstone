@@ -24,8 +24,6 @@ const PlaceDetails = ({ place, selected, refProp }) => {
   const handleclick = () => {
     console.log('clicked', place.name);
   };
-  // const [itin, setItin] = useState('');
-
   if (selected)
     refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
@@ -47,7 +45,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
         <Box display='flex' justifyContent='space-between'>
           <Rating name='read-only' value={Number(place.rating)} readOnly />
           <Typography gutterBottom variant='subtitle1'>
-            out of {place.num_reviews} reviews
+            {place.num_reviews} reviews
           </Typography>
         </Box>
         <Box display='flex' justifyContent='space-between'>
@@ -56,13 +54,6 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             {place.price_level}
           </Typography>
         </Box>
-        {/* <Box display='flex' justifyContent='space-between'>
-          <Typography variant='subtitle1'>Ranking</Typography>
-          <Typography gutterBottom variant='subtitle1'>
-            {place.ranking}
-          </Typography>
-        </Box> */}
-
         {place?.cuisine?.map(({ name }) => (
           <Chip key={name} size='small' label={name} className={classes.chip} />
         ))}
@@ -76,7 +67,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             <LocationOnIcon /> {place.address}
           </Typography>
         )}
-        {/* {place?.phone && (
+        {place?.phone && (
           <Typography
             gutterBottom
             variant='body2'
@@ -86,16 +77,6 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             <PhoneIcon /> {place.phone}
           </Typography>
         )}
-        {place?.open_now_text && (
-          <Typography
-            gutterBottom
-            variant='body2'
-            color='textSecondary'
-            className={classes.spacing}
-          >
-            {place.open_now_text}
-          </Typography>
-        )} */}
         <CardActions>
           <Button
             size='small'
@@ -111,12 +92,6 @@ const PlaceDetails = ({ place, selected, refProp }) => {
           >
             Website
           </Button>
-          {/* <FormControl className={classes.formControl}>
-            <InputLabel>Select Itinerary</InputLabel>
-            <Select value={itin} onChange={(e) => setItin(e.target.value)}>
-              <MenuItem value='restaurants'>Itin</MenuItem>
-            </Select>
-          </FormControl> */}
           <Button size='small' color='primary' onClick={handleclick}>
             Add to Itinerary
           </Button>
