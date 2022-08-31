@@ -69,7 +69,17 @@ router.delete('/:itineraryId', async (req, res, next) => {
 router.post('/:itineraryId/addEvent', async (req, res, next) => {
   try {
     const itinerary = await Itinerary.findByPk(req.params.itineraryId);
-    res.status(201).send(await itinerary.createEvent(req.body));
+    res
+      .status(201)
+      .send(
+        await itinerary.createEvent({
+          ...req.body,
+          eventType: req.body.category.name,
+          imageUrl: req.body.photo.images.large.url,
+          itineraryId: req.params.itineraryId,
+          ta_location_id: req.body.location_id,
+        })
+      );
   } catch (err) {
     next(err);
   }
@@ -78,16 +88,15 @@ router.post('/:itineraryId/addEvent', async (req, res, next) => {
 // DELETE Itinerary Event (also removes from ItineraryEvent Table)
 router.delete('/:itineraryId/deleteEvent/:eventId', async (req, res, next) => {
   try {
-    const event = await Event.findByPk(req.params.eventId)
+    const event = await Event.findByPk(req.params.eventId);
     const itinerary = await Itinerary.findByPk(req.params.itineraryId);
-    await itinerary.removeEvent(event.id)
-    await event.destroy()
+    await itinerary.removeEvent(event.id);
+    await event.destroy();
     res.status(200).send(event);
   } catch (err) {
     next(err);
   }
 });
-
 
 // test event
 // {

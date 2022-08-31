@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import addEventThunk from '../../store/itinerary';
 import {
   Box,
   Typography,
@@ -21,9 +23,13 @@ import useStyles from './styles';
 
 const PlaceDetails = ({ place, selected, refProp }) => {
   const classes = useStyles();
+  const itinerary = useSelector((state) => state.singleItinerary);
+  const dispatch = useDispatch();
+
   const handleclick = () => {
-    console.log('clicked', place.name);
+    dispatch(addEventThunk(itinerary.id, place));
   };
+
   if (selected)
     refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 

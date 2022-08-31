@@ -4,13 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import Rating from '@material-ui/lab/Rating';
 import useStyles from './styles';
 import List from '../List/List';
-
 import { getPlacesData } from '../../../server/api/googlemaps';
 import { CssBaseline, Grid } from '@material-ui/core';
 import Map from '../Map/Map';
 import SearchBar from './SearchBar';
 const Search = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [places, setPlaces] = useState([]);
   const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [childClicked, setChildClicked] = useState(null);

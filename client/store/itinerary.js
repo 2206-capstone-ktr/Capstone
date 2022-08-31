@@ -26,10 +26,10 @@ export const deleteItinerary = (itinerary) => {
     itinerary,
   };
 };
-export const addEvent = (itinerary) => {
+export const addEvent = (event) => {
   return {
     type: ADD_EVENT,
-    itinerary,
+    event,
   };
 };
 
