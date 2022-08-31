@@ -4,11 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import Rating from '@material-ui/lab/Rating';
 import useStyles from './styles';
 import List from '../List/List';
-// import Holdinginfo from '../../holdinginfo';
+
 import { getPlacesData } from '../../../server/api/googlemaps';
 import { CssBaseline, Grid } from '@material-ui/core';
 import Map from '../Map/Map';
-
+import SearchBar from './SearchBar';
 const Search = () => {
   const classes = useStyles();
   //const dispatch = useDispatch();
@@ -35,18 +35,20 @@ const Search = () => {
   }, [rating]);
 
   useEffect(() => {
-    setIsLoading(true);
-    getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
-      setPlaces(data);
-      setFilteredPlaces([]);
-      setIsLoading(false);
-    });
-  }, [type, coordinates, bounds]);
+    if (bounds.sw && bounds.ne) {
+      setIsLoading(true);
+      getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
+        setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
+        setFilteredPlaces([]);
+        setIsLoading(false);
+      });
+    }
+  }, [type, bounds]);
 
   return (
     <div className={classes.gridContainer}>
       <div>
-        <h1>Restaurants, Hotels & Attractions</h1>
+        {/* <h1>Restaurants, Hotels & Attractions</h1>
         <label>Search</label>
         <input
           className='border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200 pac-target-input'
@@ -55,7 +57,8 @@ const Search = () => {
           id='location-search'
           name='location-search'
           autoComplete='on'
-        ></input>
+        ></input> */}
+        <SearchBar setCoordinates={setCoordinates} />
         <List
           places={filteredPlaces.length ? filteredPlaces : places}
           childClicked={childClicked}
