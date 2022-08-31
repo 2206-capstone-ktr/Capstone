@@ -32,7 +32,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
   return (
     <Card elevation={6}>
       <CardMedia
-        style={{ height: 350 }}
+        style={{ height: 150 }}
         image={
           place.photo
             ? place.photo.images.large.url
@@ -56,12 +56,12 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             {place.price_level}
           </Typography>
         </Box>
-        <Box display='flex' justifyContent='space-between'>
+        {/* <Box display='flex' justifyContent='space-between'>
           <Typography variant='subtitle1'>Ranking</Typography>
           <Typography gutterBottom variant='subtitle1'>
             {place.ranking}
           </Typography>
-        </Box>
+        </Box> */}
 
         {place?.cuisine?.map(({ name }) => (
           <Chip key={name} size='small' label={name} className={classes.chip} />
@@ -76,7 +76,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             <LocationOnIcon /> {place.address}
           </Typography>
         )}
-        {place?.phone && (
+        {/* {place?.phone && (
           <Typography
             gutterBottom
             variant='body2'
@@ -95,7 +95,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
           >
             {place.open_now_text}
           </Typography>
-        )}
+        )} */}
         <CardActions>
           <Button
             size='small'
