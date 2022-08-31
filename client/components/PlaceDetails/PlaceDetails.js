@@ -35,7 +35,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
         style={{ height: 150 }}
         image={
           place.photo
-            ? place.photo.images.large.url
+            ? place.photo.images.medium.url
             : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYxlUZGKnAXRHPw5oFUdBw_kRzsAg8T9oLvw&usqp=CAU'
         }
         title={place.name}
