@@ -2,6 +2,14 @@ import axios from 'axios';
 
 export const getPlacesData = async (type, sw, ne) => {
   try {
+    if (sw.lng > 180) {
+      sw.lng = -360 + sw.lng;
+      ne.lng = -360 + ne.lng;
+    }
+    if (sw.lng < -180) {
+      sw.lng = 360 + sw.lng;
+      ne.lng = 360 + ne.lng;
+    }
     const {
       data: { data },
     } = await axios.get(
@@ -15,7 +23,7 @@ export const getPlacesData = async (type, sw, ne) => {
         },
         headers: {
           'X-RapidAPI-Key':
-            '948454b92bmsh175d7536528c3c4p11cff6jsn30402bc9975e',
+            '8f79e2cc0fmsh6fa3fab65cfd3f3p154461jsnf7a8d38a9ffd',
           'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com',
         },
       }
