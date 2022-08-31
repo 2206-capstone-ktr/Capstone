@@ -11,7 +11,6 @@ import Map from '../Map/Map';
 import SearchBar from './SearchBar';
 const Search = () => {
   const classes = useStyles();
-  //const dispatch = useDispatch();
   const [places, setPlaces] = useState([]);
   const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [childClicked, setChildClicked] = useState(null);
@@ -52,16 +51,6 @@ const Search = () => {
   return (
     <div className={classes.gridContainer}>
       <div>
-        {/* <h1>Restaurants, Hotels & Attractions</h1>
-        <label>Search</label>
-        <input
-          className='border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200 pac-target-input'
-          type='text'
-          placeholder='Example: Chicago'
-          id='location-search'
-          name='location-search'
-          autoComplete='on'
-        ></input> */}
         <SearchBar setCoordinates={setCoordinates} />
         <List
           places={filteredPlaces.length ? filteredPlaces : places}
@@ -75,7 +64,7 @@ const Search = () => {
       </div>
       <div>
         <CssBaseline />;
-        <Grid container spacing={3} style={{ width: '100%' }}>
+        <Grid container spacing={3} style={{ width: '120%' }}>
           <Grid item xs={12} md={4}></Grid>
           <Grid item xs={12} md={8}>
             <Map
@@ -91,5 +80,4 @@ const Search = () => {
     </div>
   );
 };
-//======================
 export default Search;
