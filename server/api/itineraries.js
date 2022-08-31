@@ -69,17 +69,17 @@ router.delete('/:itineraryId', async (req, res, next) => {
 router.post('/:itineraryId/addEvent', async (req, res, next) => {
   try {
     const itinerary = await Itinerary.findByPk(req.params.itineraryId);
-    res
-      .status(201)
-      .send(
-        await itinerary.createEvent({
-          ...req.body,
-          eventType: req.body.category.name,
-          imageUrl: req.body.photo.images.large.url,
-          itineraryId: req.params.itineraryId,
-          ta_location_id: req.body.location_id,
-        })
-      );
+    res.status(201).send(
+      await itinerary.createEvent({
+        ...req.body,
+        eventType: req.body.category.name,
+        imageUrl: req.body.photo.images.large.url,
+        itineraryId: req.params.itineraryId,
+        ta_location_id: req.body.location_id,
+      })
+    );
+
+    // .send(await itinerary.createEvent(req.body));
   } catch (err) {
     next(err);
   }
