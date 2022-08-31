@@ -1,15 +1,14 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchItinerary } from '../store/singleItinerary';
+import { CssBaseline, Grid } from '@material-ui/core';
 import CurrentEventCard from '../components/CurrentEventCard';
-import CurrentItinCard from '../components/CurrentItinCard';
+
+import ItinMap from '../components/Map/ItineraryMap';
 
 export const currentItineraryView = (props) => {
   const itinerary = useSelector((state) => state.singleItinerary);
 
-  // console.log(itinerary);
-  // const days = [1, 2, 3, 4];
   const events = [
     {
       id: 1,
@@ -27,6 +26,21 @@ export const currentItineraryView = (props) => {
       type: 'views',
     },
   ];
+
+  const [coordinates, setCoordinates] = useState({
+    lat: 41.8826,
+    lng: 87.6226,
+  });
+  const [bounds, setBounds] = useState({});
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        setCoordinates({ lat: latitude, lng: longitude });
+        console.log(coordinates, 'This is  center');
+      }
+    );
+  }, []);
 
   let [num, setNum] = useState(1);
   let [cur, setCur] = useState(1);
@@ -55,6 +69,7 @@ export const currentItineraryView = (props) => {
           {itinerary.startDate} to {itinerary.endDate}
         </p>
         <br></br>
+
         <div className='flex justify-center'>
           Days :
           <button
@@ -98,6 +113,17 @@ export const currentItineraryView = (props) => {
           <CurrentEventCard key={event.id} event={event} />
         ))}
       </div>
+      <CssBaseline />
+      <Grid container spacing={3} style={{ width: '115%' }}>
+        <Grid item xs={12} md={4}></Grid>
+        <Grid item xs={12} md={8}>
+          <ItinMap
+            setCoordinates={setCoordinates}
+            setBounds={setBounds}
+            coordinates={coordinates}
+          />
+        </Grid>
+      </Grid>
     </div>
   );
 };
