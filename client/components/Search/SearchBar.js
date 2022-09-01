@@ -13,7 +13,6 @@ const SearchBar = ({ setCoordinates }) => {
     const place = autocomplete.getPlace();
     const lat = place.geometry.location.lat();
     const lng = place.geometry.location.lng();
-    console.log(lat, lng, 'inside location change');
     setCoordinates({ lat, lng });
   };
 
