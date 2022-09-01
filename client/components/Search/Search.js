@@ -53,8 +53,8 @@ const Search = () => {
       <div>
         <SearchBar setCoordinates={setCoordinates} />
         <List
-          places={filteredPlaces.length ? filteredPlaces : places}
           childClicked={childClicked}
+          places={filteredPlaces.length ? filteredPlaces : places}
           isLoading={isLoading}
           type={type}
           setType={setType}
