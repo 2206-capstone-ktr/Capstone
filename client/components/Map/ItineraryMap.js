@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
 import { useMediaQuery } from '@material-ui/core';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
@@ -19,6 +19,17 @@ const ItinMap = ({
     lng: 87.6226,
   };
 
+  useEffect(() => {
+    if (places) {
+      if (places.length > 0) {
+        setCoords({
+          lat: Number(places[0].latitude),
+          lng: Number(places[0].longitude),
+        });
+      }
+    }
+  }, [places]);
+
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
@@ -35,14 +46,14 @@ const ItinMap = ({
         }}
         onChildClick={(child) => setChildClicked(child)}
       >
-        {places?.map((place, i) => (
+        {/* {places?.map((place, i) => (
           <div
             className={classes.markerContainer}
             lat={Number(place.latitude)}
             lng={Number(place.longitude)}
             key={i}
           ></div>
-        ))}
+        ))} */}
       </GoogleMapReact>
     </div>
   );

@@ -64,10 +64,12 @@ export const deleteItineraryById = (itineraryId) => async (dispatch) => {
 };
 export const addEventThunk = (itineraryId, event) => async (dispatch) => {
   try {
+    console.log('helloooo--->');
     const { data } = await axios.post(
       `/api/itineraries/${itineraryId}/addEvent`,
       event
     );
+    console.log(data, 'this is data_________#$&@#$');
     dispatch(addEvent(data));
   } catch (error) {
     return error;
@@ -76,6 +78,7 @@ export const addEventThunk = (itineraryId, event) => async (dispatch) => {
 
 //Reducer
 export default function itinerary(state = [], action) {
+  console.log(action, 'this is action reducer');
   switch (action.type) {
     case GET_ITINERARIES:
       return action.itineraries;

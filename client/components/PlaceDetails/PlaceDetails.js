@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import addEventThunk from '../../store/itinerary';
+import { addEventThunk } from '../../store/itinerary';
 import {
   Box,
   Typography,
@@ -27,7 +27,10 @@ const PlaceDetails = ({ place, selected, refProp }) => {
   const dispatch = useDispatch();
 
   const handleclick = () => {
-    dispatch(addEventThunk(itinerary.id, place));
+    const itineraryId = itinerary.id;
+    console.log(itineraryId, 'ItineraryId');
+    console.log(place, 'this s place');
+    addEventThunk(itineraryId, place);
   };
 
   if (selected)
