@@ -13,12 +13,11 @@ const ItinMap = ({
   setChildClicked,
 }) => {
   const classes = useStyles();
-  //   const mapMarker = { lat: 40.760851, lng: -73.964331 };
   const defCenter = {
     lat: 41.8826,
     lng: 87.6226,
   };
-  console.log(itinerary, 'this ');
+
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
