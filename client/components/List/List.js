@@ -31,8 +31,6 @@ const List = ({
     setElRefs(refs);
   }, [places]);
 
-  console.log({ childClicked });
-
   return (
     <div className={classes.container}>
       {/* <Typography variant='h4'>Restaurants, Hotels & Attractions</Typography> */}

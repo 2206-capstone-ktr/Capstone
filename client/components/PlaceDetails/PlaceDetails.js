@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import addEventThunk from '../../store/itinerary';
+import { addEventThunk } from '../../store/itinerary';
 import {
   Box,
   Typography,
