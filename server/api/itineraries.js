@@ -18,7 +18,9 @@ router.get('/', async (req, res, next) => {
 router.get('/:itineraryId', async (req, res, next) => {
   try {
     const itineraryId = req.params.itineraryId;
-    const itineraries = await Itinerary.findByPk(itineraryId);
+    const itineraries = await Itinerary.findByPk(itineraryId, {
+      include: Event,
+    });
     res.json(itineraries);
   } catch (err) {
     next(err);

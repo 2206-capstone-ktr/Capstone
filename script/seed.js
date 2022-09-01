@@ -1,8 +1,8 @@
-'use strict'
+'use strict';
 
 const {
   db,
-  models: { User, Itinerary, UserTable },
+  models: { User, Itinerary, UserTable, Event },
 } = require('../server/db');
 
 /**
@@ -92,6 +92,29 @@ async function seed() {
       itineraryId: 4,
     }),
   ]);
+  const events = await Promise.all([
+    itineraries[0].createEvent({
+      ta_location_id: 1,
+      eventType: 'Attraction',
+      name: 'Surfing',
+      latitude: '40.7',
+      longitude: '-74',
+    }),
+    itineraries[0].createEvent({
+      ta_location_id: 2,
+      eventType: 'Restuarant',
+      name: 'Chipotle',
+      latitude: '40.8',
+      longitude: '-74.2',
+    }),
+    itineraries[1].createEvent({
+      ta_location_id: 3,
+      eventType: 'Hotel',
+      name: 'Hilton Hotel',
+      latitude: '40.4',
+      longitude: '-74.5',
+    }),
+  ]);
 
   console.log(`seeded ${users.length} users`);
   console.log(`seeded successfully`);
@@ -109,16 +132,16 @@ async function seed() {
  The `seed` function is concerned only with modifying the database.
 */
 async function runSeed() {
-  console.log('seeding...')
+  console.log('seeding...');
   try {
-    await seed()
+    await seed();
   } catch (err) {
-    console.error(err)
-    process.exitCode = 1
+    console.error(err);
+    process.exitCode = 1;
   } finally {
-    console.log('closing db connection')
-    await db.close()
-    console.log('db connection closed')
+    console.log('closing db connection');
+    await db.close();
+    console.log('db connection closed');
   }
 }
 
@@ -128,8 +151,8 @@ async function runSeed() {
   any errors that might occur inside of `seed`.
 */
 if (module === require.main) {
-  runSeed()
+  runSeed();
 }
 
 // we export the seed function for testing purposes (see `./seed.spec.js`)
-module.exports = seed
+module.exports = seed;

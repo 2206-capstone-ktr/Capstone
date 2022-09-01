@@ -9,16 +9,16 @@ const ItinMap = ({
   setCoordinates,
   setBounds,
   coordinates,
-  places,
+  itinerary,
   setChildClicked,
 }) => {
   const classes = useStyles();
-  const isDesktop = useMediaQuery('(min-width:600px)');
+  //   const mapMarker = { lat: 40.760851, lng: -73.964331 };
   const defCenter = {
     lat: 41.8826,
     lng: 87.6226,
   };
-
+  console.log(itinerary, 'this ');
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
@@ -35,13 +35,15 @@ const ItinMap = ({
         }}
         onChildClick={(child) => setChildClicked(child)}
       >
-        {places?.map((place, i) => (
+        {itinerary.events?.map((event, i) => (
           <div
             className={classes.markerContainer}
-            lat={Number(place.latitude)}
-            lng={Number(place.longitude)}
+            lat={Number(event.latitude)}
+            lng={Number(event.longitude)}
             key={i}
-          ></div>
+          >
+            <LocationOnOutlinedIcon color='primary' fontSize='large' />
+          </div>
         ))}
       </GoogleMapReact>
     </div>
