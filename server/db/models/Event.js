@@ -2,10 +2,6 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 
 const Event = db.define('event', {
-  eventType: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
   ta_location_id: {
     type: Sequelize.STRING,
     allowNull: false,

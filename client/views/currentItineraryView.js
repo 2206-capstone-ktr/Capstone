@@ -8,37 +8,6 @@ import ItinMap from '../components/Map/ItineraryMap';
 
 export const currentItineraryView = (props) => {
   const itinerary = useSelector((state) => state.singleItinerary);
-  console.log(itinerary, 'happy');
-  // const events = [
-  //   {
-  //     id: 1,
-  //     name: 'Surfing',
-  //     type: 'sporteeee',
-  //     latitude: '40.7',
-  //     longitude: '-74',
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Eating pizza',
-  //     type: 'eating',
-  //     latitude: '40.779434',
-  //     longitude: '-73.963402',
-  //   },
-  //   {
-  //     id: 3,
-  //     name: 'Taking tour bus',
-  //     type: 'views',
-  //     latitude: '40.829659',
-  //     longitude: '-73.926186',
-  //   },
-  //   {
-  //     id: 4,
-  //     name: 'Taking tour bus',
-  //     type: 'views',
-  //     latitude: '40.929659',
-  //     longitude: '-73.966186',
-  //   },
-  // ];
 
   const [coordinates, setCoordinates] = useState({
     lat: 41.8826,
