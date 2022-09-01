@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 function ActiveItinCard(props) {
   const itin = props.itin;
-  console.log(props, 'itin props');
 
   return (
     <div className='flex flex-row'>

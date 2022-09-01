@@ -3,10 +3,12 @@ const db = require('../db');
 
 const ItineraryEvent = db.define('itineraryEvent', {
   day: {
-    type: Sequelize.DATE,
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
   },
   position: {
     type: Sequelize.INTEGER,
+    defaultValue: 0,
   },
 });
 
