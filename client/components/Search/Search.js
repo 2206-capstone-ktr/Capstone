@@ -63,8 +63,8 @@ const Search = () => {
         />
       </div>
       <div>
-        <CssBaseline />;
-        <Grid container spacing={3} style={{ width: '120%' }}>
+        <CssBaseline />
+        <Grid container spacing={3} style={{ width: '125%' }}>
           <Grid item xs={12} md={4}></Grid>
           <Grid item xs={12} md={8}>
             <Map
@@ -80,4 +80,5 @@ const Search = () => {
     </div>
   );
 };
+//======================
 export default Search;

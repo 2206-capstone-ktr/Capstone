@@ -18,7 +18,9 @@ router.get('/', async (req, res, next) => {
 router.get('/:itineraryId', async (req, res, next) => {
   try {
     const itineraryId = req.params.itineraryId;
-    const itineraries = await Itinerary.findByPk(itineraryId);
+    const itineraries = await Itinerary.findByPk(itineraryId, {
+      include: Event,
+    });
     res.json(itineraries);
   } catch (err) {
     next(err);
@@ -78,16 +80,15 @@ router.post('/:itineraryId/addEvent', async (req, res, next) => {
 // DELETE Itinerary Event (also removes from ItineraryEvent Table)
 router.delete('/:itineraryId/deleteEvent/:eventId', async (req, res, next) => {
   try {
-    const event = await Event.findByPk(req.params.eventId)
+    const event = await Event.findByPk(req.params.eventId);
     const itinerary = await Itinerary.findByPk(req.params.itineraryId);
-    await itinerary.removeEvent(event.id)
-    await event.destroy()
+    await itinerary.removeEvent(event.id);
+    await event.destroy();
     res.status(200).send(event);
   } catch (err) {
     next(err);
   }
 });
-
 
 // test event
 // {
