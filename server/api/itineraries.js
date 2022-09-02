@@ -79,12 +79,44 @@ router.post('/:itineraryId/addEvent', async (req, res, next) => {
         ta_location_id: req.body.location_id,
       })
     );
-
-    // .send(await itinerary.createEvent(req.body));
   } catch (err) {
     next(err);
   }
 });
+
+// // PUT Itinery Event
+// // edit order of events, day 0 is unassigned // not functional yet
+// router.put('/:itineraryId/editEvent', async (req, res, next) => {
+//     try {
+//       const allEvents = req.body;
+//       await Promise.all(
+//         allEvents.map(async (event) => {
+//           await ItineraryEvent.findOne({
+//             where: {
+//               itineraryId: event.itineraryId,
+//               eventId: event.eventId,
+//             },
+//           }).then(async (foundEvent) => {
+//             const singleEvent = allEvents.find((event) => {
+//               return (
+//                 event.eventId === foundEvent.eventId &&
+//                 event.itineraryId === foundEvent.itineraryId
+//               );
+//             });
+//             await foundEvent.update(singleEvent);
+//           });
+//         })
+//       );
+//       next();
+//     } catch (error) {
+//       next(error);
+//     }
+//   },
+//   getItinerarybyId
+// );
+
+
+
 
 // DELETE Itinerary Event (also removes from ItineraryEvent Table)
 router.delete('/:itineraryId/deleteEvent/:eventId', async (req, res, next) => {
