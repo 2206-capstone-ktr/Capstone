@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import { useMediaQuery } from '@material-ui/core';
-import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 
 import useStyles from './styles';
+import ItinMapMarker from './ItinMapMarker';
 
 const ItinMap = ({
   setCoordinates,
@@ -29,20 +29,16 @@ const ItinMap = ({
         options={{ zoomControl: true }}
         onChange={(e) => {
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
-
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
         onChildClick={(child) => setChildClicked(child)}
       >
         {itinerary.events?.map((event, i) => (
-          <div
-            className={classes.markerContainer}
+          <ItinMapMarker
             lat={Number(event.latitude)}
             lng={Number(event.longitude)}
             key={i}
-          >
-            <LocationOnOutlinedIcon color='primary' fontSize='large' />
-          </div>
+          />
         ))}
       </GoogleMapReact>
     </div>

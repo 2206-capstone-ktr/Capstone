@@ -79,28 +79,82 @@ router.post('/:itineraryId/addEvent', async (req, res, next) => {
         ta_location_id: req.body.location_id,
       })
     );
-
-    // .send(await itinerary.createEvent(req.body));
   } catch (err) {
     next(err);
   }
 });
 
+// // PUT Itinery Event
+// // edit order of events, day 0 is unassigned // not functional yet
+// router.put('/:itineraryId/editEvent', async (req, res, next) => {
+//     try {
+//       const allEvents = req.body;
+//       await Promise.all(
+//         allEvents.map(async (event) => {
+//           await ItineraryEvent.findOne({
+//             where: {
+//               itineraryId: event.itineraryId,
+//               eventId: event.eventId,
+//             },
+//           }).then(async (foundEvent) => {
+//             const singleEvent = allEvents.find((event) => {
+//               return (
+//                 event.eventId === foundEvent.eventId &&
+//                 event.itineraryId === foundEvent.itineraryId
+//               );
+//             });
+//             await foundEvent.update(singleEvent);
+//           });
+//         })
+//       );
+//       next();
+//     } catch (error) {
+//       next(error);
+//     }
+//   },
+//   getItinerarybyId
+// );
+
 // DELETE Itinerary Event (also removes from ItineraryEvent Table)
 router.delete('/:itineraryId/deleteEvent/:eventId', async (req, res, next) => {
   try {
-    const event = await Event.findByPk(req.params.eventId);
     const itinerary = await Itinerary.findByPk(req.params.itineraryId);
-    //await itinerary.removeEvent(event.id);
-    await event.destroy({
+    const deletedEvent = await Event.findOne({
       where: {
         itineraryId: req.params.itineraryId,
         id: req.params.eventId,
       },
     });
-    res.status(200).send(event);
-  } catch (err) {
-    next(err);
+    const deletedEventPosition = await ItineraryEvents.findOne({
+      where: {
+        itineraryId: req.params.itineraryId,
+        eventId: deletedEvent.id,
+      },
+    });
+    await itinerary.removeEvent(req.params.eventId);
+    await Event.destroy({
+      where: {
+        itineraryId: req.params.itineraryId,
+        id: req.params.eventId,
+      },
+    });
+    const events = await ItineraryEvents.findAll({
+      where: {
+        itineraryId: req.params.itineraryId,
+      },
+    });
+    events.forEach(async (event) => {
+      if (
+        event.position !== null &&
+        event.position > deletedEventPosition.position
+      ) {
+        await event.update({ position: event.position - 1 });
+      }
+    });
+
+    res.send(deletedEvent);
+  } catch (error) {
+    next(error);
   }
 });
 

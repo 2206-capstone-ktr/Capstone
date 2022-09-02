@@ -6,6 +6,7 @@ import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import Rating from '@material-ui/lab/Rating';
 
 import useStyles from './styles';
+import MapMarker from './MapMarker';
 
 const Map = ({
   setCoordinates,
@@ -32,47 +33,18 @@ const Map = ({
         options={{ zoomControl: true }}
         onChange={(e) => {
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
-
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
         onChildClick={(child) => setChildClicked(child)}
       >
         {places?.map((place, i) => (
-          <div
-            className={classes.markerContainer}
+          <MapMarker
             lat={Number(place.latitude)}
             lng={Number(place.longitude)}
             key={i}
-          >
-            {isDesktop ? (
-              <LocationOnOutlinedIcon color='primary' fontSize='large' />
-            ) : (
-              <Paper elevation={3} className={classes.paper}>
-                <Typography
-                  className={classes.typography}
-                  variant='subtitle2'
-                  gutterBottom
-                >
-                  {place.name}
-                </Typography>
-                <img
-                  className={classes.pointer}
-                  src={
-                    place.photo
-                      ? place.photo.images.large.url
-                      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYxlUZGKnAXRHPw5oFUdBw_kRzsAg8T9oLvw&usqp=CAU'
-                  }
-                  alt={place.name}
-                />
-                <Rating
-                  name='read-only'
-                  size='small'
-                  value={Number(place.rating)}
-                  readOnly
-                />
-              </Paper>
-            )}
-          </div>
+            place={place}
+            isDesktop={isDesktop}
+          />
         ))}
       </GoogleMapReact>
     </div>
