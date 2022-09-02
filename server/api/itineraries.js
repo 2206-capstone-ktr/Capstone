@@ -91,8 +91,13 @@ router.delete('/:itineraryId/deleteEvent/:eventId', async (req, res, next) => {
   try {
     const event = await Event.findByPk(req.params.eventId);
     const itinerary = await Itinerary.findByPk(req.params.itineraryId);
-    await itinerary.removeEvent(event.id);
-    await event.destroy();
+    //await itinerary.removeEvent(event.id);
+    await event.destroy({
+      where: {
+        itineraryId: req.params.itineraryId,
+        id: req.params.eventId,
+      },
+    });
     res.status(200).send(event);
   } catch (err) {
     next(err);

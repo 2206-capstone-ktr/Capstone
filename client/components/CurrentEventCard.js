@@ -1,7 +1,19 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import deleteEventThunk from '../store/itinerary';
 
 function CurrentEventCard(props) {
   const event = props.event;
+  const dispatch = useDispatch();
+  const handleClick = async (itineraryId, eventId) => {
+    try {
+      dispatch(deleteEventThunk(itineraryId, eventId));
+      alert('Itinerary deleted!');
+      window.location.reload(false);
+    } catch {
+      alert('oops something went wrong');
+    }
+  };
 
   return (
     <a
@@ -19,6 +31,9 @@ function CurrentEventCard(props) {
           {event.name}
         </h5>
         <p>{event.type}</p>
+        <button className='btn btn-blue' onClick={handleClick}>
+          Delete
+        </button>
       </div>
     </a>
   );

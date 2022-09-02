@@ -5,6 +5,7 @@ const GET_ITINERARIES = 'GET_ITINERARIES';
 const SET_ITINERARY = 'SET_ITINERARY';
 const DELETE_ITINERARY = 'DELETE_ITINERARY';
 const ADD_EVENT = 'ADD_EVENT';
+const DELETE_EVENT = 'DELETE_EVENT';
 
 // action creator(s)
 
@@ -31,6 +32,9 @@ export const addEvent = (event) => {
     type: ADD_EVENT,
     event,
   };
+};
+export const deleteEvent = (event) => {
+  return { type: DELETE_EVENT, event };
 };
 
 // thunks
@@ -74,6 +78,17 @@ export const addEventThunk = (itineraryId, event) => async (dispatch) => {
   }
 };
 
+export const deleteEventThunk = (itineraryId, eventId) => async (dispatch) => {
+  try {
+    const { data } = await axios.delete(
+      `/${itineraryId}/deleteEvent/${eventId}`
+    );
+    dispatch(deleteEvent(data));
+  } catch (error) {
+    return error;
+  }
+};
+
 //Reducer
 export default function itinerary(state = [], action) {
   switch (action.type) {
@@ -90,6 +105,12 @@ export default function itinerary(state = [], action) {
       );
     case ADD_EVENT:
       return state;
+    case DELETE_EVENT: {
+      let removedEvent = state.events.filter(
+        (event) => event.id !== action.event.id
+      );
+      return { ...state, events: removedEvent };
+    }
     default:
       return state;
   }
