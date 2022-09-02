@@ -1,11 +1,22 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteEventThunk } from '../store/itinerary';
 
 function CurrentEventCard(props) {
   const event = props.event;
+  const dispatch = useDispatch();
+  const itinerary = useSelector((state) => state.singleItinerary);
+
+  const handleClick = () => {
+    try {
+      dispatch(deleteEventThunk(itinerary.id, event.id));
+    } catch {
+      alert('oops something went wrong');
+    }
+  };
 
   return (
-    <a
-      href='#'
+    <div
       key={event.id}
       className='flex flex-col items-center m-5 bg-white rounded-lg border shadow-lg md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'
     >
@@ -18,8 +29,11 @@ function CurrentEventCard(props) {
         <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
           {event.name}
         </h5>
+        <button className='btn btn-blue' onClick={handleClick}>
+          Delete
+        </button>
       </div>
-    </a>
+    </div>
   );
 }
 
