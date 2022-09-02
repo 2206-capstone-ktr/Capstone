@@ -80,8 +80,9 @@ export const addEventThunk = (itineraryId, event) => async (dispatch) => {
 
 export const deleteEventThunk = (itineraryId, eventId) => async (dispatch) => {
   try {
+    //console.log(itineraryId, eventId, 'inside the thunk');
     const { data } = await axios.delete(
-      `/${itineraryId}/deleteEvent/${eventId}`
+      `/api/itineraries/${itineraryId}/deleteEvent/${eventId}`
     );
     dispatch(deleteEvent(data));
   } catch (error) {
@@ -106,10 +107,11 @@ export default function itinerary(state = [], action) {
     case ADD_EVENT:
       return state;
     case DELETE_EVENT: {
-      let removedEvent = state.itinerary.filter(
-        (event) => event.id !== action.event.id
-      );
       return state;
+      // let newState = state.events.filter(
+      //   (event) => event.id !== action.event.id
+      // );
+      // return { ...state, events: newState };
     }
     default:
       return state;
