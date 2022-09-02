@@ -106,10 +106,10 @@ export default function itinerary(state = [], action) {
     case ADD_EVENT:
       return state;
     case DELETE_EVENT: {
-      let removedEvent = state.events.filter(
+      let removedEvent = state.itinerary.filter(
         (event) => event.id !== action.event.id
       );
-      return { ...state, events: removedEvent };
+      return state;
     }
     default:
       return state;

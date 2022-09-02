@@ -5,6 +5,8 @@ import deleteEventThunk from '../store/itinerary';
 function CurrentEventCard(props) {
   const event = props.event;
   const dispatch = useDispatch();
+  const itineraryId = state.itinerary.id;
+  const eventId = event.id;
   const handleClick = async (itineraryId, eventId) => {
     try {
       dispatch(deleteEventThunk(itineraryId, eventId));
