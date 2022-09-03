@@ -3,12 +3,15 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { CssBaseline, Grid } from '@material-ui/core';
 import CurrentEventCard from '../components/CurrentEventCard';
-
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import ItinMap from '../components/Map/ItineraryMap';
 
 export const currentItineraryView = (props) => {
   const itinerary = useSelector((state) => state.singleItinerary);
 
+  const itinevents = itinerary.events;
+  const [itineraryEvents, updateEvents] = useState(itinevents);
+  console.log(itineraryEvents);
   const [coordinates, setCoordinates] = useState({
     lat: 41.8826,
     lng: 87.6226,
@@ -37,6 +40,13 @@ export const currentItineraryView = (props) => {
   }
   function back() {
     num > 1 && setNum(--num);
+  }
+  function handleOnDragEnd(result) {
+    if (!result.destination) return;
+    const items = Array.from(itineraryEvents);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+    updateEvents(items);
   }
 
   return (
@@ -90,9 +100,40 @@ export const currentItineraryView = (props) => {
             </svg>
           </button>
         </div>
-        {itinerary.events?.map((event) => (
-          <CurrentEventCard key={event.id} event={event} />
-        ))}
+        <div className='flex bg-white rounded-lg font-[Poppins]'>
+          <DragDropContext onDragEnd={handleOnDragEnd}>
+            <Droppable droppableId='events'>
+              {(provided) => (
+                <ul
+                  className='events'
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {itinerary.events?.map((event, index) => {
+                    return (
+                      <Draggable
+                        key={event.id}
+                        draggableId={String(event.id)}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            <CurrentEventCard key={event.id} event={event} />
+                          </div>
+                        )}
+                      </Draggable>
+                    );
+                  })}
+                  {provided.placeholder}
+                </ul>
+              )}
+            </Droppable>
+          </DragDropContext>
+        </div>
       </div>
       <CssBaseline />
       <Grid container spacing={3} style={{ width: '150%' }}>
