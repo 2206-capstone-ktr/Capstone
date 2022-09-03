@@ -5,13 +5,11 @@ import { CssBaseline, Grid } from '@material-ui/core';
 import CurrentEventCard from '../components/CurrentEventCard';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import ItinMap from '../components/Map/ItineraryMap';
+import { ContactsOutlined } from '@material-ui/icons';
 
 export const currentItineraryView = (props) => {
   const itinerary = useSelector((state) => state.singleItinerary);
 
-  const itinevents = itinerary.events;
-  const [itineraryEvents, updateEvents] = useState(itinevents);
-  console.log(itineraryEvents);
   const [coordinates, setCoordinates] = useState({
     lat: 41.8826,
     lng: 87.6226,
@@ -29,24 +27,40 @@ export const currentItineraryView = (props) => {
   let [num, setNum] = useState(1);
   let [cur, setCur] = useState(1);
 
-  const days = [
-    { day: num },
-    { day: num + 1 },
-    { day: num + 2 },
-    { day: num + 3 },
-  ];
+  let days = [];
+  for (let i = 1; i <= itinerary.days; i++) {
+    days.push({ day: i });
+  }
+
   function Next() {
     setNum(++num);
   }
   function back() {
     num > 1 && setNum(--num);
   }
+
+  // Drag and Drop Functionality starts here
+
+  // const itinevents = itinerary.events; // NEED to make a deep copy
+  // const itinevents = [...itinerary.events];
+
+  useEffect(() => {
+    if (itinerary.events) updateEvents([...itinerary.events]);
+  }, [itinerary]);
+
+  const [itineraryEvents, updateEvents] = useState([]);
+  console.log('ItineraryEvent Array', itineraryEvents);
+
   function handleOnDragEnd(result) {
     if (!result.destination) return;
-    const items = Array.from(itineraryEvents);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
-    updateEvents(items);
+    console.log('Source', result.source);
+    console.log('Destination', result.destination);
+    updateEvents((oldArray) => {
+      let items = Array.from(oldArray);
+      let [reorderedItem] = items.splice(result.source.index, 1);
+      items.splice(result.destination.index, 0, reorderedItem);
+      return items;
+    });
   }
 
   return (
@@ -109,7 +123,7 @@ export const currentItineraryView = (props) => {
                   {...provided.droppableProps}
                   ref={provided.innerRef}
                 >
-                  {itinerary.events?.map((event, index) => {
+                  {itineraryEvents?.map((event, index) => {
                     return (
                       <Draggable
                         key={event.id}
