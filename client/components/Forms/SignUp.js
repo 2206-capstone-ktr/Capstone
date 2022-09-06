@@ -5,7 +5,7 @@ import { authenticate } from '../../store';
 const AuthSignUp = (props) => {
   const { name, displayName, handleSubmit, error } = props;
   return (
-    <div>
+    <div className='position-fixed'>
       <form onSubmit={handleSubmit} name={name}>
         <div>
           <label htmlFor='email'>
