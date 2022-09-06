@@ -37,6 +37,7 @@
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
     "react-beautiful-dnd": "^13.1.1",
+    "react-hot-toast": "^2.3.0",
     "react-places-autocomplete": "^7.3.0",
     "sequelize": "^6.3.5"
   },

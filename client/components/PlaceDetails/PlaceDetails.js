@@ -20,6 +20,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PhoneIcon from '@material-ui/icons/Phone';
 import Rating from '@material-ui/lab/Rating';
 import useStyles from './styles';
+import toast from 'react-hot-toast';
 
 const PlaceDetails = ({ place, selected, refProp }) => {
   const classes = useStyles();
@@ -29,7 +30,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
   const handleclick = () => {
     try {
       dispatch(addEventThunk(itinerary.id, place));
-      alert('Event added!');
+      toast.success('Successfully added!');
     } catch {
       alert('something went wrong');
     }
