@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteEventThunk } from '../store/itinerary';
+import toast from 'react-hot-toast';
 
 function CurrentEventCard(props) {
   const event = props.event;
@@ -10,7 +11,8 @@ function CurrentEventCard(props) {
   const handleClick = () => {
     try {
       dispatch(deleteEventThunk(itinerary.id, event.id));
-      alert('Event deleted successfully!');
+      // alert('Event deleted successfully!');
+      toast.success('Successfully deleted!');
     } catch {
       alert('oops something went wrong');
     }
