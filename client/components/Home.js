@@ -15,7 +15,7 @@ export const Home = (props) => {
         backgroundImage: `url('https://media.istockphoto.com/photos/young-man-arms-outstretched-by-the-sea-at-sunrise-enjoying-freedom-picture-id1285301614?b=1&k=20&m=1285301614&s=612x612&w=0&h=oL04ACGYXP5cepM8NLZIyJaeUjuYoXYIrTT-Ej2jTAQ=')`,
       }}
     >
-      <h3 className='text-3xl font-bold  text-yellow-600'>
+      <h3 className='text-3xl font-bold  text-yellow-600 text-center pt-5'>
         Welcome, {auth.firstName}
       </h3>
 
@@ -32,9 +32,11 @@ export const Home = (props) => {
         </Link>
       </div>
       <div>
-        <h2 className='text-3xl bg-blue-500 inline-flex  text-center font-bold m-5  text-white'>
-          Top Trending Cities
-        </h2>
+        <div className='text-3xl text-center font-bold m-5  text-white'>
+          <span className=' bg-blue-500 m-5 py-2 px-4'>
+            Top Trending Cities
+          </span>
+        </div>
         <div className='flex justify-around items-end pb-12'>
           <div className='relative'>
             <img
