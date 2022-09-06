@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { CssBaseline, Grid } from '@material-ui/core';
 import CurrentEventCard from '../components/CurrentEventCard';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import useStyles from './styles';
 import ItinMap from '../components/Map/ItineraryMap';
 import { ContactsOutlined } from '@material-ui/icons';
 
 export const currentItineraryView = (props) => {
+  const classes = useStyles();
   const itinerary = useSelector((state) => state.singleItinerary);
 
   const [coordinates, setCoordinates] = useState({
