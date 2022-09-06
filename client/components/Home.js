@@ -15,28 +15,10 @@ export const Home = (props) => {
         backgroundImage: `url('https://media.istockphoto.com/photos/young-man-arms-outstretched-by-the-sea-at-sunrise-enjoying-freedom-picture-id1285301614?b=1&k=20&m=1285301614&s=612x612&w=0&h=oL04ACGYXP5cepM8NLZIyJaeUjuYoXYIrTT-Ej2jTAQ=')`,
       }}
     >
-      <h3 className='text-3xl font-bold m-5 text-yellow-600'>
+      <h3 className='text-3xl font-bold  text-yellow-600'>
         Welcome, {auth.firstName}
       </h3>
 
-      <div className='flex justify-between items-center bg-blue-300 border-y border-black py-10 lg:py-0 opacity-30'>
-        <div className='px-10 space-y-5'>
-          <h1 className='text-6xl max-w-xl font-serif text-white'>
-            <span className='underline decoration-white decoration-4 text-white'>
-              Welcome to Planr
-            </span>{' '}
-            Planning a vacation is a few simple clicks away.
-          </h1>
-          <h2 className='text-white'>
-            Start planning your next trip with a little help from Planr
-          </h2>
-        </div>
-        <img
-          className='hidden md:inline-flex h-32 lg:h-full'
-          src='cal-icon.ico'
-          alt=''
-        />
-      </div>
       <div className='flex justify-around my-16'>
         <Link to={'/activeitineraries'}>
           <button className='btn btn-blue w-96 h-36' type='submit'>
@@ -50,10 +32,10 @@ export const Home = (props) => {
         </Link>
       </div>
       <div>
-        <h2 className='text-3xl font-bold m-5 flex justify-center text-white'>
+        <h2 className='text-3xl bg-blue-500 inline-flex  text-center font-bold m-5  text-white'>
           Top Trending Cities
         </h2>
-        <div className='flex justify-between pb-6'>
+        <div className='flex justify-around items-end pb-12'>
           <div className='relative'>
             <img
               src='https://thumbs.dreamstime.com/b/chicago-skyline-28481891.jpg'
