@@ -20,7 +20,7 @@ const AuthSignUp = (props) => {
             >
               <small>Email</small>
             </label>
-            <input name='email' type='text' />
+            <input name='email' type='text' className='border-black' />
           </div>
           <div>
             <label
@@ -29,7 +29,7 @@ const AuthSignUp = (props) => {
             >
               <small>Password</small>
             </label>
-            <input name='password' type='password' />
+            <input name='password' type='password' className='border-black' />
           </div>
           <div>
             <label
@@ -38,7 +38,7 @@ const AuthSignUp = (props) => {
             >
               <small>First Name</small>
             </label>
-            <input name='firstName' type='text' />
+            <input name='firstName' type='text' className='border-black' />
           </div>
           <div>
             <label
@@ -47,7 +47,7 @@ const AuthSignUp = (props) => {
             >
               <small>Last Name</small>
             </label>
-            <input name='lastName' type='text' />
+            <input name='lastName' type='text' className='border-black' />
           </div>
           <div>
             <button type='submit'>{displayName}</button>
