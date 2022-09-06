@@ -37,59 +37,70 @@ class CreateItinerary extends React.Component {
     const { name, city, description, startDate, endDate } = this.state;
 
     return (
-      <div className='m-5'>
-        <h3>Create Itinerary</h3>
+      <div
+        className='w-full h-screen bg-no-repeat bg-cover bg-center bg-fixed '
+        style={{
+          backgroundImage: `url('https://media.istockphoto.com/photos/young-man-arms-outstretched-by-the-sea-at-sunrise-enjoying-freedom-picture-id1285301614?b=1&k=20&m=1285301614&s=612x612&w=0&h=oL04ACGYXP5cepM8NLZIyJaeUjuYoXYIrTT-Ej2jTAQ=')`,
+        }}
+      >
+        <div className='m-5'>
+          <h3>Create Itinerary</h3>
 
-        <h4>Basic Information</h4>
-        <form>
-          <div className=''>
-            <label>Itinerary Name</label>
-            <input
-              type='text'
-              name='name'
-              onChange={handleChange}
-              value={name}
-            />
-            <label>Description</label>
-            <input
-              type='text'
-              name='description'
-              onChange={handleChange}
-              value={description}
-            />
+          <h4>Basic Information</h4>
+          <form>
+            <div className=''>
+              <label>Itinerary Name</label>
+              <input
+                type='text'
+                name='name'
+                onChange={handleChange}
+                value={name}
+              />
+              <label>Description</label>
+              <input
+                type='text'
+                name='description'
+                onChange={handleChange}
+                value={description}
+              />
 
-            <label>City</label>
-            <input
-              type='text'
-              name='city'
-              onChange={handleChange}
-              value={city}
-            />
-            <h4>Trip Date</h4>
-            <label htmlFor='start'>Start Date:</label>
-            <input
-              type='date'
-              id='start'
-              name='startDate'
-              onChange={handleChange}
-              value={startDate}
-            />
-            <label htmlFor='end'>End Date:</label>
-            <input
-              type='date'
-              id='end'
-              name='endDate'
-              onChange={handleChange}
-              value={endDate}
-            />
-          </div>
-          <button className='btn btn-blue' type='submit' onClick={handleClick}>
-            Add Itinerary
-          </button>
-          <button className='btn btn-blue' type='submit'>
-            Invite Others
-          </button>
-        </form>
+              <label>City</label>
+              <input
+                type='text'
+                name='city'
+                onChange={handleChange}
+                value={city}
+              />
+              <h4>Trip Date</h4>
+              <label htmlFor='start'>Start Date:</label>
+              <input
+                type='date'
+                id='start'
+                name='startDate'
+                onChange={handleChange}
+                value={startDate}
+              />
+              <label htmlFor='end'>End Date:</label>
+              <input
+                type='date'
+                id='end'
+                name='endDate'
+                onChange={handleChange}
+                value={endDate}
+              />
+            </div>
+            <button
+              className='btn btn-blue'
+              type='submit'
+              onClick={handleClick}
+            >
+              Add Itinerary
+            </button>
+            <button className='btn btn-blue' type='submit'>
+              Invite Others
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
