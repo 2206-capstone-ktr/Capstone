@@ -4,6 +4,7 @@ const {
   db,
   models: { User, Itinerary, UserTable, Event },
 } = require('../server/db');
+const ItineraryEvent = require('../server/db/models/ItineraryEvent');
 
 /**
  * seed - this function clears the database, updates tables to
@@ -93,27 +94,33 @@ async function seed() {
     }),
   ]);
   const events = await Promise.all([
-    itineraries[0].createEvent({
+    Event.create({
       ta_location_id: 1,
       eventType: 'Attraction',
       name: 'Surfing',
       latitude: '40.7',
       longitude: '-74',
     }),
-    itineraries[0].createEvent({
+    Event.create({
       ta_location_id: 2,
       eventType: 'Restuarant',
       name: 'Chipotle',
       latitude: '40.8',
       longitude: '-74.2',
     }),
-    itineraries[1].createEvent({
+    Event.create({
       ta_location_id: 3,
       eventType: 'Hotel',
       name: 'Hilton Hotel',
       latitude: '40.4',
       longitude: '-74.5',
     }),
+  ]);
+
+  const itineraryEvents = await Promise.all([
+    ItineraryEvent.create({ day: 0, eventId: 1, itineraryId: 1 }),
+    ItineraryEvent.create({ day: 1, eventId: 2, itineraryId: 1 }),
+    ItineraryEvent.create({ day: 1, eventId: 3, itineraryId: 2 }),
   ]);
 
   console.log(`seeded ${users.length} users`);

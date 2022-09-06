@@ -127,7 +127,7 @@ export const currentItineraryView = (props) => {
                       ref={provided.innerRef}
                     >
                       {itineraryEvents
-                        ?.filter((event) => event.itineraryEvent.day > 0)
+                        ?.filter((event) => event.itineraryEvent.day === cur)
                         .map((event, index) => {
                           return (
                             <Draggable
