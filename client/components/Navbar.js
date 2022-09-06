@@ -13,7 +13,7 @@ const Navbar = ({ handleClick, isLoggedIn, auth }) => (
     </Link>
     <div>
       {isLoggedIn ? (
-        <div className='hidden md:inline-flex items-center space-x-5 pr-5 font-bold text-1xl'>
+        <div className='hidden md:inline-flex items-center space-x-5 pr-5 font-medium text-1xl'>
           <Link to='/home'>Home</Link>
           <Link to='/search'>Search</Link>
           <Link to='/create'>Create Itinerary</Link>
