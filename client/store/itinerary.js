@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { fetchItinerary } from './singleItinerary';
 // action type
 
 const GET_ITINERARIES = 'GET_ITINERARIES';
@@ -85,6 +86,7 @@ export const deleteEventThunk = (itineraryId, eventId) => async (dispatch) => {
       `/api/itineraries/${itineraryId}/deleteEvent/${eventId}`
     );
     dispatch(deleteEvent(data));
+    dispatch(fetchItinerary(itineraryId));
   } catch (error) {
     return error;
   }

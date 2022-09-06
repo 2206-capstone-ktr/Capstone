@@ -10,6 +10,7 @@ function CurrentEventCard(props) {
   const handleClick = () => {
     try {
       dispatch(deleteEventThunk(itinerary.id, event.id));
+      alert('Event deleted successfully!');
     } catch {
       alert('oops something went wrong');
     }
