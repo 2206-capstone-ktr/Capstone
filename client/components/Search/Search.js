@@ -48,7 +48,12 @@ const Search = () => {
   }, [type, bounds]);
 
   return (
-    <div className={classes.gridContainer}>
+    <div
+      className={classes.gridContainer}
+      style={{
+        backgroundImage: `url('https://travellersworldwide.com/wp-content/uploads/elementor/thumbs/shutterstock_623111885-1-scaled-phifxb7av8bl2lrxdes1syk43v9acwtvrveysd1ouo.jpg.webp')`,
+      }}
+    >
       <div>
         <SearchBar setCoordinates={setCoordinates} />
         <List
