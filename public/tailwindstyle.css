@@ -993,19 +993,27 @@ nav {
   background-color: rgb(79 70 229 / var(--tw-bg-opacity));
 }
 
-.bg-blue-200 {
+.bg-gray-200 {
   --tw-bg-opacity: 1;
-  background-color: rgb(191 219 254 / var(--tw-bg-opacity));
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
-.bg-blue-300 {
+.bg-gray-100 {
   --tw-bg-opacity: 1;
-  background-color: rgb(147 197 253 / var(--tw-bg-opacity));
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
-.bg-blue-400 {
+.bg-red-200 {
   --tw-bg-opacity: 1;
-  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+}
+
+.bg-\[url\(\`https\:\/\/travellersworldwide\.com\/wp-content\/uploads\/elementor\/thumbs\/shutterstock_623111885-1-scaled-phifxb7av8bl2lrxdes1syk43v9acwtvrveysd1ouo\.jpg\.webp\`\)\] {
+  background-image: url(`https://travellersworldwide.com/wp-content/uploads/elementor/thumbs/shutterstock_623111885-1-scaled-phifxb7av8bl2lrxdes1syk43v9acwtvrveysd1ouo.jpg.webp`);
+}
+
+.bg-\[url\(\'https\:\/\/travellersworldwide\.com\/wp-content\/uploads\/elementor\/thumbs\/shutterstock_623111885-1-scaled-phifxb7av8bl2lrxdes1syk43v9acwtvrveysd1ouo\.jpg\.webp\'\)\] {
+  background-image: url('https://travellersworldwide.com/wp-content/uploads/elementor/thumbs/shutterstock_623111885-1-scaled-phifxb7av8bl2lrxdes1syk43v9acwtvrveysd1ouo.jpg.webp');
 }
 
 .bg-cover {
@@ -1072,8 +1080,17 @@ nav {
   padding-right: 1rem;
 }
 
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .pt-5 {
   padding-top: 1.25rem;
+}
+
+.pb-52 {
+  padding-bottom: 13rem;
 }
 
 .pb-12 {
@@ -1092,16 +1109,20 @@ nav {
   padding-top: 10rem;
 }
 
-.pb-40 {
-  padding-bottom: 10rem;
+.pb-5 {
+  padding-bottom: 1.25rem;
 }
 
-.pb-60 {
-  padding-bottom: 15rem;
+.pt-32 {
+  padding-top: 8rem;
 }
 
-.pb-52 {
-  padding-bottom: 13rem;
+.pl-16 {
+  padding-left: 4rem;
+}
+
+.pl-8 {
+  padding-left: 2rem;
 }
 
 .text-center {
@@ -1192,6 +1213,22 @@ nav {
 .antialiased {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.opacity-20 {
+  opacity: 0.2;
+}
+
+.opacity-80 {
+  opacity: 0.8;
+}
+
+.opacity-90 {
+  opacity: 0.9;
 }
 
 .shadow {

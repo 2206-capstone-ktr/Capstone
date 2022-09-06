@@ -10,7 +10,7 @@ function ActiveItinCard(props) {
         onClick={() => props.onClick(itin)}
         to={'/currentItinerary'}
         key={itin.id}
-        className='flex flex-col flex-grow items-center m-5 bg-white rounded-lg border shadow-lg md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'
+        className='flex flex-col flex-grow items-center m-5 opacity-90 bg-white rounded-lg border shadow-lg md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'
       >
         <img
           className='object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg'

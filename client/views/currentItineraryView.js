@@ -66,19 +66,18 @@ export const currentItineraryView = (props) => {
   }
 
   return (
-    <div className='flex bg-white rounded-lg font-[Poppins]'>
-      <div>
-        <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
+    <div className="flex bg-[url('https://travellersworldwide.com/wp-content/uploads/elementor/thumbs/shutterstock_623111885-1-scaled-phifxb7av8bl2lrxdes1syk43v9acwtvrveysd1ouo.jpg.webp')] font-[Poppins]">
+      <div className='px-5'>
+        <div className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
           {itinerary.name}
-        </h5>
+        </div>
         <br></br>
         <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
           {itinerary.startDate} to {itinerary.endDate}
         </p>
         <br></br>
-
         <div className='flex justify-center'>
-          Days :
+          <span className='pr-5'>Days:</span>
           <button
             onClick={back}
             className='h-12 border-2 border-r-0 border-indigo-600
@@ -116,7 +115,7 @@ export const currentItineraryView = (props) => {
             </svg>
           </button>
         </div>
-        <div className='flex bg-white rounded-lg font-[Poppins]'>
+        <div className='flex bg-red-200 rounded-lg font-[Poppins]'>
           <DragDropContext onDragEnd={handleOnDragEnd}>
             <Droppable droppableId='events'>
               {(provided) => (
@@ -152,9 +151,9 @@ export const currentItineraryView = (props) => {
         </div>
       </div>
       <CssBaseline />
-      <Grid container spacing={3} style={{ width: '150%' }}>
-        <Grid item xs={10} md={3}></Grid>
-        <Grid item xs={8} md={4}>
+      <Grid container spacing={3} style={{ width: '100%' }}>
+        <Grid item xs={12} md={4}></Grid>
+        <Grid item xs={12} md={4}>
           <ItinMap
             setCoordinates={setCoordinates}
             setBounds={setBounds}
