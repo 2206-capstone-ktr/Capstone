@@ -44,19 +44,23 @@ class CreateItinerary extends React.Component {
         }}
       >
         <div className='m-5'>
-          <h3>Create Itinerary</h3>
+          <h3 className=' py-10 font-bold  text-yellow-600'>
+            Create Itinerary
+          </h3>
 
-          <h4>Basic Information</h4>
+          <h4 className='font-bold  text-yellow-600'>Basic Information</h4>
           <form>
             <div className=''>
-              <label>Itinerary Name</label>
+              <label className='font-bold  text-yellow-600'>
+                Itinerary Name
+              </label>
               <input
                 type='text'
                 name='name'
                 onChange={handleChange}
                 value={name}
               />
-              <label>Description</label>
+              <label className='font-bold  text-yellow-600'>Description</label>
               <input
                 type='text'
                 name='description'
@@ -64,29 +68,35 @@ class CreateItinerary extends React.Component {
                 value={description}
               />
 
-              <label>City</label>
+              <label className='font-bold  text-yellow-600'>City</label>
               <input
                 type='text'
                 name='city'
                 onChange={handleChange}
                 value={city}
               />
-              <h4>Trip Date</h4>
-              <label htmlFor='start'>Start Date:</label>
+              <h4 className='font-bold  text-yellow-600'>Trip Date</h4>
+              <label htmlFor='start' className='font-bold  text-yellow-600'>
+                Start Date:
+              </label>
               <input
                 type='date'
                 id='start'
                 name='startDate'
                 onChange={handleChange}
                 value={startDate}
+                className='font-bold  text-yellow-600'
               />
-              <label htmlFor='end'>End Date:</label>
+              <label htmlFor='end' className='font-bold  text-yellow-600'>
+                End Date:
+              </label>
               <input
                 type='date'
                 id='end'
                 name='endDate'
                 onChange={handleChange}
                 value={endDate}
+                className='font-bold  text-yellow-600'
               />
             </div>
             <button
@@ -96,7 +106,7 @@ class CreateItinerary extends React.Component {
             >
               Add Itinerary
             </button>
-            <button className='btn btn-blue' type='submit'>
+            <button className='btn btn-blue ' type='submit'>
               Invite Others
             </button>
           </form>

@@ -12,27 +12,39 @@ const AuthSignUp = (props) => {
       }}
     >
       <div className='position-fixed'>
-        <form onSubmit={handleSubmit} name={name}>
-          <div>
-            <label htmlFor='email'>
+        <form onSubmit={handleSubmit} name={name} className='px-20'>
+          <div className='font-bold'>
+            <label
+              htmlFor='email'
+              className='block text-gray-700 text-sm font-bold mb-2'
+            >
               <small>Email</small>
             </label>
             <input name='email' type='text' />
           </div>
           <div>
-            <label htmlFor='password'>
+            <label
+              htmlFor='password'
+              className='block text-gray-700 text-sm font-bold mb-2'
+            >
               <small>Password</small>
             </label>
             <input name='password' type='password' />
           </div>
           <div>
-            <label htmlFor='firstName'>
+            <label
+              htmlFor='firstName'
+              className='block text-gray-700 text-sm font-bold mb-2'
+            >
               <small>First Name</small>
             </label>
             <input name='firstName' type='text' />
           </div>
           <div>
-            <label htmlFor='lastName'>
+            <label
+              htmlFor='lastName'
+              className='block text-gray-700 text-sm font-bold mb-2'
+            >
               <small>Last Name</small>
             </label>
             <input name='lastName' type='text' />
@@ -50,7 +62,7 @@ const AuthSignUp = (props) => {
 const mapSignup = (state) => {
   return {
     name: 'signup',
-    displayName: 'Sign Up',
+    displayName: 'Create Account',
     error: state.auth.error,
   };
 };
