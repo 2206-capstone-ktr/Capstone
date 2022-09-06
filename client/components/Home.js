@@ -32,9 +32,11 @@ export const Home = (props) => {
         </Link>
       </div>
       <div>
-        <h2 className='text-3xl bg-blue-500 inline-flex  text-center font-bold m-5  text-white'>
-          Top Trending Cities
-        </h2>
+        <div className='text-3xl text-center font-bold m-5  text-white'>
+          <span className=' bg-blue-500 m-5 py-2 px-4'>
+            Top Trending Cities
+          </span>
+        </div>
         <div className='flex justify-around items-end pb-12'>
           <div className='relative'>
             <img

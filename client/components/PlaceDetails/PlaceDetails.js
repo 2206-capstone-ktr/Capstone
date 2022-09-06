@@ -27,7 +27,12 @@ const PlaceDetails = ({ place, selected, refProp }) => {
   const dispatch = useDispatch();
 
   const handleclick = () => {
-    dispatch(addEventThunk(itinerary.id, place));
+    try {
+      dispatch(addEventThunk(itinerary.id, place));
+      alert('Event Added!');
+    } catch {
+      alert('oops something went wrong');
+    }
   };
 
   if (selected)
