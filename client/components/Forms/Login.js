@@ -13,14 +13,14 @@ const AuthLogin = (props) => {
     >
       <div>
         <form onSubmit={handleSubmit} name={name}>
-          <div className='px-40'>
+          <div className='px-40 '>
             <label
               htmlFor='email'
               className='block text-gray-700 text-sm font-bold mb-2'
             >
               <small className='textColor'>Email</small>
             </label>
-            <input name='email' type='text' />
+            <input name='email' type='text' className='border-black' />
           </div>
           <div>
             <label
@@ -29,7 +29,7 @@ const AuthLogin = (props) => {
             >
               <small>Password</small>
             </label>
-            <input name='password' type='password' />
+            <input name='password' type='password' className='border-black' />
           </div>
           <div>
             <button type='submit'>{displayName}</button>
