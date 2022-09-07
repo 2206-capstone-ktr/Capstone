@@ -43,8 +43,8 @@ class CreateItinerary extends React.Component {
           backgroundImage: `url('https://media.istockphoto.com/photos/young-man-arms-outstretched-by-the-sea-at-sunrise-enjoying-freedom-picture-id1285301614?b=1&k=20&m=1285301614&s=612x612&w=0&h=oL04ACGYXP5cepM8NLZIyJaeUjuYoXYIrTT-Ej2jTAQ=')`,
         }}
       >
-        <div className='px-5'>
-          <h4 className='font-bold  text-yellow-600 pt-40 pb-5 px-5 text-2xl'>
+        <div className='px-5 pb-4'>
+          <h4 className='font-bold  text-yellow-600 pt-40 pb-4 px-5 text-2xl'>
             Basic Information
           </h4>
           <form>

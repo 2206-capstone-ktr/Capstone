@@ -117,6 +117,7 @@ export const currentItineraryView = (props) => {
                 </svg>
               </button>
             </div>
+            <div className='py-5 text-3xl font-bold'>Assigned</div>
             <div className='flex bg-red-200 rounded-lg font-[Poppins]'>
               <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Droppable droppableId='events'>
