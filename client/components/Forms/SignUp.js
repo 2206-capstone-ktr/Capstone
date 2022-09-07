@@ -55,6 +55,9 @@ const AuthSignUp = (props) => {
           {error && error.response && <div> {error.response.data} </div>}
         </form>
       </div>
+      <div className='fixed inset-x-0 bottom-0 pl-48 pb- 24 text-white font-mono text-6xl'>
+        Travel Happiness is a few clicks away!
+      </div>
     </div>
   );
 };

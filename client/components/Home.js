@@ -22,7 +22,7 @@ export const Home = (props) => {
       <div className='flex justify-around my-16 pb-52'>
         <Link to={'/activeitineraries'}>
           <button
-            className='bg-red-100 opacity-75 w-96 h-36 text-3xl text-yellow-600'
+            className='bg-red-100 hover:bg-red-200 opacity-75 w-96 h-36 rounded-full text-3xl text-yellow-600'
             type='submit'
           >
             Current Itineraries
@@ -30,7 +30,7 @@ export const Home = (props) => {
         </Link>
         <Link to={'/create'}>
           <button
-            className='bg-red-100 opacity-75 w-96 h-36 text-3xl text-yellow-600'
+            className='bg-red-100 hover:bg-red-200 opacity-75 w-96 h-36 rounded-full text-3xl text-yellow-600'
             type='submit'
           >
             Create an Itinerary
@@ -39,7 +39,7 @@ export const Home = (props) => {
       </div>
       <div>
         <div className='text-3xl text-center font-bold m-5  text-yellow-600'>
-          <span className='bg-red-100 opacity-75 m-5 py-2 px-4'>
+          <span className='bg-red-100 hover:bg-red-200 opacity-75 m-5 py-2 px-4'>
             Top Trending Cities
           </span>
         </div>
