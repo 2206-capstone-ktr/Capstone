@@ -11,9 +11,10 @@ const AuthLogin = (props) => {
         backgroundImage: `url('https://media.istockphoto.com/photos/young-man-arms-outstretched-by-the-sea-at-sunrise-enjoying-freedom-picture-id1285301614?b=1&k=20&m=1285301614&s=612x612&w=0&h=oL04ACGYXP5cepM8NLZIyJaeUjuYoXYIrTT-Ej2jTAQ=')`,
       }}
     >
+      {' '}
       <div>
         <form onSubmit={handleSubmit} name={name}>
-          <div className='px-40 '>
+          <div className='px-40'>
             <label
               htmlFor='email'
               className='block text-gray-700 text-sm font-bold mb-2'
@@ -36,6 +37,9 @@ const AuthLogin = (props) => {
           </div>
           {error && error.response && <div> {error.response.data} </div>}
         </form>
+      </div>{' '}
+      <div className='fixed inset-x-0 bottom-0 pl-48 pb- 24 text-white font-mono text-6xl'>
+        Travel Happiness is a few clicks away!
       </div>
     </div>
   );
@@ -63,3 +67,4 @@ const mapDispatch = (dispatch) => {
 };
 
 export const Login = connect(mapLogin, mapDispatch)(AuthLogin);
+// ' h-36 bg-red-200 absolute sm:text-4xl text-3xl my-72 font-medium text-yellow-600'
