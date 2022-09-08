@@ -6,10 +6,8 @@ import CurrentEventCard from '../components/CurrentEventCard';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import useStyles from './styles';
 import ItinMap from '../components/Map/ItineraryMap';
-import { ContactsOutlined } from '@material-ui/icons';
 
 export const currentItineraryView = (props) => {
-  const classes = useStyles();
   const itinerary = useSelector((state) => state.singleItinerary);
 
   const [coordinates, setCoordinates] = useState({
@@ -41,6 +39,20 @@ export const currentItineraryView = (props) => {
     num > 1 && setNum(--num);
   }
 
+  const dayMap = [];
+  if (itinerary.days) {
+    dayMap.length = itinerary.days;
+  }
+  for (let i = 0; i < dayMap.length; i++) {
+    dayMap[i] = [];
+  }
+
+  itinerary.events &&
+    itinerary.events.forEach((event) => {
+      dayMap[event.itineraryEvent.day] = dayMap[event.itineraryEvent.day] || [];
+      dayMap[event.itineraryEvent.day].push(event);
+    });
+
   // Drag and Drop Functionality starts here
 
   // const itinevents = itinerary.events; // NEED to make a deep copy
@@ -55,14 +67,109 @@ export const currentItineraryView = (props) => {
 
   function handleOnDragEnd(result) {
     if (!result.destination) return;
-    console.log('Source', result.source);
-    console.log('Destination', result.destination);
-    updateEvents((oldArray) => {
-      let items = Array.from(oldArray);
-      let [reorderedItem] = items.splice(result.source.index, 1);
-      items.splice(result.destination.index, 0, reorderedItem);
-      return items;
+    // droppableId = name of container column
+    if (
+      result.destination.droppableId === 'assignedTasks' &&
+      result.source.droppableId === 'assignedTasks'
+    ) {
+      dayMap[cur].forEach((item) => {
+        // Moving events position < updated position (Case 1: Drag down)
+        if (
+          dayMap[cur][result.source.index - 1].itineraryEvent.position <
+          result.destination.index + 1
+        ) {
+          // item position < updated position and item position > starting position
+          if (
+            item.itineraryEvent.position <= result.destination.index &&
+            item.itineraryEvent.position > result.source.index
+          ) {
+            // Subtract one from the items position
+            item.itineraryEvent.position = item.itineraryEvent.position - 1;
+            // else if item position >= updated position
+          }
+          // Moving events position < updated position (Case 2: Drag Up)
+        } else if (
+          dayMap[cur][result.source.index - 1].itineraryEvent.position >
+          result.destination.index
+        ) {
+          // item position <= starting position and item position >= updated position
+          if (
+            item.itineraryEvent.position < result.source.index &&
+            item.itineraryEvent.position >= result.destination.index
+          ) {
+            // item position = +1 its position
+            item.itineraryEvent.position = item.itineraryEvent.position + 1;
+          }
+        }
+      });
+      // Finally, update the moving events position to the updated position
+      dayMap[cur][result.source.index - 1].itineraryEvent.position =
+        result.destination.index;
+    } // Moving objects to unassigned
+    if (
+      result.source.droppableId === 'unassignedTasks' &&
+      result.destination.droppableId === 'unassignedTasks'
+    ) {
+      return;
+    }
+    if (
+      result.source.droppableId === 'unassignedTasks' &&
+      result.destination.droppableId === 'assignedTasks'
+    ) {
+      Array.isArray(dayMap) &&
+        dayMap[cur].forEach((item) => {
+          if (item.itineraryEvent.position >= result.destination.index) {
+            item.itineraryEvent.position = item.itineraryEvent.position + 1;
+          }
+        });
+      if (dayMap[cur].length !== 0) {
+        dayMap[0][result.source.index].itineraryEvent.position =
+          result.destination.index;
+        dayMap[0][result.source.index].itineraryEvent.day = cur;
+      } else {
+        dayMap[0][result.source.index].itineraryEvent.position = 1;
+        dayMap[0][result.source.index].itineraryEvent.day = cur;
+      }
+    }
+    if (
+      result.destination.droppableId === 'unassignedTasks' &&
+      result.source.droppableId === 'assignedTasks'
+    ) {
+      // Loop through the objects
+      Array.isArray(dayMap) &&
+        dayMap[cur].forEach((item) => {
+          if (item.itineraryEvent.position > result.source.index) {
+            item.itineraryEvent.position = item.itineraryEvent.position - 1;
+          }
+        });
+      dayMap[cur][result.source.index - 1].itineraryEvent.position = null;
+      dayMap[cur][result.source.index - 1].itineraryEvent.day = 0;
+    }
+
+    const updatedItineraryEvents =
+      dayMap[cur] &&
+      dayMap[cur].map((event) => {
+        return event.itineraryEvent;
+      });
+    const massgedData = () => {
+      if (dayMap[0]) {
+        const updatedDay0Events =
+          dayMap[0] &&
+          dayMap[0].map((event) => {
+            return event.itineraryEvent;
+          });
+        return [...updatedItineraryEvents, ...updatedDay0Events];
+      }
+      return updatedItineraryEvents;
+    };
+    // Pass it to the backend for updating
+    updatedItineraryEvents.sort((a, b) => {
+      return a.position - b.position;
     });
+    dayMap[cur].sort((a, b) => {
+      return a.itineraryEvent.position - b.itineraryEvent.position;
+    });
+    dispatch(reorderItinerary(massgedData()));
   }
 
   return (
@@ -118,8 +225,9 @@ export const currentItineraryView = (props) => {
                   </svg>
                 </button>
               </div>
+              <div className='py-5 text-3xl font-bold'>Assigned</div>
               <div className='flex bg-red-200 rounded-lg font-[Poppins]'>
-                <Droppable droppableId='events'>
+                <Droppable droppableId='assignedTasks'>
                   {(provided) => (
                     <ul
                       className='events'
@@ -133,7 +241,7 @@ export const currentItineraryView = (props) => {
                             <Draggable
                               key={event.id}
                               draggableId={String(event.id)}
-                              index={index}
+                              index={event.itineraryEvent.position}
                             >
                               {(provided) => (
                                 <div
@@ -155,8 +263,9 @@ export const currentItineraryView = (props) => {
                   )}
                 </Droppable>
               </div>
+              <div className='py-5 text-3xl font-bold'>Unassigned</div>
               <div className='flex bg-blue-200 rounded-lg font-[Poppins]'>
-                <Droppable droppableId='unassigned'>
+                <Droppable droppableId='unassignedTasks'>
                   {(provided) => (
                     <ul
                       className='unassigned'

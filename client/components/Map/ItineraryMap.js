@@ -31,7 +31,6 @@ const ItinMap = ({
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
-        onChildClick={(child) => setChildClicked(child)}
       >
         {itinerary.events?.map((event, i) => (
           <ItinMapMarker
