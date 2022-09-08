@@ -39,7 +39,7 @@ function CurrentEventCard(props) {
         <h6 className=' text-2lg font-medium  text-gray-900 dark:text-white'>
           Phone: {event.phone}
         </h6>
-        <button className='btn btn-blue w-36 ' onClick={handleClick}>
+        <button className='btn btn-blue w-36' onClick={handleClick}>
           Delete
         </button>
       </div>
