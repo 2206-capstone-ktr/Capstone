@@ -10,7 +10,7 @@ export const Home = (props) => {
 
   return (
     <div
-      className='w-full h-screen bg-no-repeat bg-cover bg-center bg-fixed '
+      className='w-full h-full bg-no-repeat bg-cover bg-center bg-fixed '
       style={{
         backgroundImage: `url('https://media.istockphoto.com/photos/young-man-arms-outstretched-by-the-sea-at-sunrise-enjoying-freedom-picture-id1285301614?b=1&k=20&m=1285301614&s=612x612&w=0&h=oL04ACGYXP5cepM8NLZIyJaeUjuYoXYIrTT-Ej2jTAQ=')`,
       }}
@@ -21,19 +21,27 @@ export const Home = (props) => {
 
       <div className='flex justify-around my-16 pb-52'>
         <Link to={'/activeitineraries'}>
-          <button className='btn btn-blue w-96 h-36' type='submit'>
+          <button
+            className='bg-red-100 hover:bg-red-200 opacity-75 w-96 h-36 rounded-full text-3xl text-yellow-600'
+            type='submit'
+          >
             Current Itineraries
           </button>
         </Link>
         <Link to={'/create'}>
-          <button className='btn btn-blue w-96 h-36' type='submit'>
+          <button
+            className='bg-red-100 hover:bg-red-200 opacity-75 w-96 h-36 rounded-full text-3xl text-yellow-600'
+            type='submit'
+          >
             Create an Itinerary
           </button>
         </Link>
       </div>
       <div>
         <div className='text-3xl text-center font-bold m-5  text-yellow-600'>
-          <span className='bg-blue-500 m-5 py-2 px-4'>Top Trending Cities</span>
+          <span className='bg-red-100 hover:bg-red-200 opacity-75 m-5 py-2 px-4'>
+            Top Trending Cities
+          </span>
         </div>
         <div className='flex justify-around items-end pb-12'>
           <div className='relative'>

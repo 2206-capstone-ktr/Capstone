@@ -38,18 +38,18 @@ class CreateItinerary extends React.Component {
 
     return (
       <div
-        className='w-full h-screen bg-no-repeat bg-cover bg-center bg-fixed'
+        className='w-full h-screen bg-no-repeat bg-cover bg-center bg-fixed '
         style={{
           backgroundImage: `url('https://media.istockphoto.com/photos/young-man-arms-outstretched-by-the-sea-at-sunrise-enjoying-freedom-picture-id1285301614?b=1&k=20&m=1285301614&s=612x612&w=0&h=oL04ACGYXP5cepM8NLZIyJaeUjuYoXYIrTT-Ej2jTAQ=')`,
         }}
       >
-        <div className='px-5'>
-          <h4 className='font-bold  text-yellow-600 pt-40 pb-5 px-5'>
+        <div className='px-5 pb-4'>
+          <h4 className='font-bold  text-yellow-600 pt-40 pb-4 px-5 text-2xl'>
             Basic Information
           </h4>
           <form>
             <div className=''>
-              <label className='font-bold  text-yellow-600'>
+              <label className='font-bold  text-yellow-600 text-xl'>
                 Itinerary Name
               </label>
               <input
@@ -58,23 +58,33 @@ class CreateItinerary extends React.Component {
                 onChange={handleChange}
                 value={name}
               />
-              <label className='font-bold  text-yellow-600'>Description</label>
+              <label className='font-bold  text-yellow-600 text-xl pt-8'>
+                Description
+              </label>
               <input
                 type='text'
                 name='description'
                 onChange={handleChange}
                 value={description}
+                //className='h-20'
               />
 
-              <label className='font-bold  text-yellow-600'>City</label>
+              <label className='font-bold  text-yellow-600 text-xl pt-8'>
+                City
+              </label>
               <input
                 type='text'
                 name='city'
                 onChange={handleChange}
                 value={city}
               />
-              <h4 className='font-bold  text-yellow-600'>Trip Date</h4>
-              <label htmlFor='start' className='font-bold  text-yellow-600'>
+              <h4 className='font-bold  text-yellow-600 pt-8 pb-4 text-2xl'>
+                Trip Date
+              </h4>
+              <label
+                htmlFor='start'
+                className='font-bold  text-yellow-600 text-xl'
+              >
                 Start Date:
               </label>
               <input
@@ -85,7 +95,10 @@ class CreateItinerary extends React.Component {
                 value={startDate}
                 className='font-bold  text-yellow-600'
               />
-              <label htmlFor='end' className='font-bold  text-yellow-600'>
+              <label
+                htmlFor='end'
+                className='font-bold  text-yellow-600 text-xl pt-8'
+              >
                 End Date:
               </label>
               <input
@@ -97,17 +110,23 @@ class CreateItinerary extends React.Component {
                 className='font-bold  text-yellow-600'
               />
             </div>
+          </form>
+          <br></br>
+          <div className='flex flex-col space-y-4 px-5'>
             <button
-              className='btn btn-blue'
+              className='bg-red-200 hover:bg-red-300 opacity-75  rounded-full text-xl text-yellow-600 h-8 w-52'
               type='submit'
               onClick={handleClick}
             >
               Add Itinerary
             </button>
-            <button className='btn btn-blue ' type='submit'>
+            <button
+              className='bg-red-200 hover:bg-red-300 opacity-75  rounded-full text-xl text-yellow-600 h-8 w-52'
+              type='submit'
+            >
               Invite Others
             </button>
-          </form>
+          </div>
         </div>
       </div>
     );
